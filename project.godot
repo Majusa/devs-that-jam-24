@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="New Gadevs-that-jam-24"
+config/name="devs-that-jam-24"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
