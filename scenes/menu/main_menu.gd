@@ -12,5 +12,5 @@ func _on_quit_pressed():
 
 
 func _on_test_random_pressed():
-	SceneHandlage.PickScene()
+	SceneHandlage.PickScene(Global.LevelArray)
 	pass # Replace with function body.

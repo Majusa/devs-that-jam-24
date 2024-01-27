@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c431snws47i1x"]
+
+[ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="1_nrhet"]
+
+[node name="Score" type="HBoxContainer"]
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 2
+text = "SCORE"
+label_settings = ExtResource("1_nrhet")
+
+[node name="ScoreText" type="Label" parent="."]
+layout_mode = 2

@@ -1,7 +1,7 @@
 extends Node
 
-
 var score : int;
+var score_increment: int = 100;
 var levels : Array;
 var total_levels: int;
 var levels_completed : int;
@@ -18,14 +18,33 @@ var high_scores : Array;
 	StringName("ThrowThePoet") : StringName("res://scenes/game/levels/throw_the_poet/throw_the_poet.tscn")
 }
 
-var m_CurrentSceneAlias : String = ""
+@export var LevelArray : Array;
 
 func _ready():
+	setup_game();
+
+func setup_game():
 	lives = 4;
-	difficulty = 0;
 	score = 0;
 	levels_completed = 0;
+	difficulty = 0;
+	set_level_array();
 	
+func set_level_array():
+	LevelArray = [
+	"ThrowThePoet",
+	"StealTheBird",
+	"StrokeTheInjury",
+	"FightTheDrawer",
+	"AccumulateTheFriendship"
+	]
+
+func increase_score():
+	score += score_increment;
+
+func increase_levels_completed():
+	levels_completed += 1;
+
 func set_difficulty():
 	match levels_completed:
 		0,1,2,3:
@@ -35,3 +54,5 @@ func set_difficulty():
 		8,9,10,11:
 			difficulty = 2;
 
+
+	

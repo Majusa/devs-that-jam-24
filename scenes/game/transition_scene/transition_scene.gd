@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var timer : Timer = Timer.new()
-@onready var nextScene : String = SceneHandlage.PickScene()
+@onready var nextScene : String = SceneHandlage.PickScene(Global.LevelArray)
 
 func _ready():
 	add_child(timer)

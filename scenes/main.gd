@@ -1,12 +1,35 @@
 extends Node
 
 @onready var Globals : Node = $Global
-@onready var GameStartTimer : Timer = $Timer
+@onready var GameStartTimer : Timer = $GameTimer
 @onready var MainMenu : Control = $MainMenu
+@onready var TransitionHud : CanvasLayer = $TransitionHud
 
 var level_instance : Node2D
 
 func _ready():
+	TransitionHud.hide()
+
+func _on_timer_signal_receive():
+	pass
+
+func _on_win_signal_receive():
+	# Take remaining hearts and 
+	pass
+
+func increase_score():
+	Global.score += Global.score_win;
+
+func decrease_life():
+	if Global.lives > 0:
+		Global.lives -= 1;
+	else:
+		game_over()
+		pass
+	
+func game_over():
+	# Trigger game over scene
+	# Game over scene should contain a scene change back to main and reset all arrays 
 	pass
 
 

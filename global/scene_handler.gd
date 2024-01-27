@@ -8,14 +8,12 @@ class_name SceneHandler
 	"TransitionScene" : "res://scenes/game/transition_scene/transition_scene.tscn",
 	"FightTheDrawer" : "res://scenes/game/levels/fight_the_drawer/fight_the_drawer.tscn",
 	"AccumulateTheFriendship" : "res://scenes/game/levels/accumulate_the_friendship/accumulate_the_friendship.tscn",
-	"ThrowThePoet" : "res://scenes/game/levels/throw_the_poet/throw_the_poet.tscn"
+	"ThrowThePoet" : "res://scenes/game/levels/throw_the_poet/throw_the_poet.tscn",
+	"StealTheBird" : "res://scenes/game/levels/steal_the_bird/steal_the_bird.tscn",
+	"StrokeTheInjury" : "res://scenes/game/levels/stroke_the_injury/stroke_the_injury.tscn",
 }
 
-@export var LevelArray : Array = [
-	"ThrowThePoet",
-	"FightTheDrawer",
-	"AccumulateTheFriendship"
-]
+
 
 #@export var Scenes : Dictionary = Global.LevelScenes
 
@@ -32,10 +30,11 @@ func _ready() -> void:
 	#print(mainScene)
 	m_CurrentSceneAlias = Scenes.find_key(mainScene)
 
-func PickScene():
+func PickScene(LevelArray : Array):
 	randomize()
-	var next_scene = LevelArray[randi_range(0,LevelArray.size()-1)]
-	print(next_scene)
+	var random_index = randi_range(0,LevelArray.size()-1)
+	var next_scene = LevelArray[random_index]
+	LevelArray.remove_at(random_index)
 	return next_scene
 	
 	
