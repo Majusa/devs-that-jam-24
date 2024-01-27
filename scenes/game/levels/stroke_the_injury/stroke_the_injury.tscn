@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://bgoo1bxgon8os"]
+[gd_scene format=3 uid="uid://c1cy1tra8ro0h"]
 
 [node name="StrokeTheInjury" type="Node2D"]
+
+[node name="BackgroundReally" type="Sprite2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D/Area2D"]
+
+[node name="InjuryBody" type="Sprite2D" parent="CharacterBody2D/Area2D/CollisionPolygon2D"]
+
+[node name="Head" type="Sprite2D" parent="CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody"]
+
+[node name="Left Arm" type="Sprite2D" parent="CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody"]
+
+[node name="Right Arm" type="Sprite2D" parent="CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody"]
+root_node = NodePath("../../../../..")
