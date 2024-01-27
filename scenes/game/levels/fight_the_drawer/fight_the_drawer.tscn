@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfb3dggu875gy"]
 
-[ext_resource type="Texture2D" uid="uid://dgot1ty6imkie" path="res://assets/sprites/DALL·E 2024-01-26 18.41.26 - A cartoon-style chest of drawers displaying an angry expression. The chest is made of wood with exaggerated features large, glaring eyes, furrowed br.png" id="1_25qm3"]
+[ext_resource type="Texture2D" uid="uid://cs2m86be6b3vj" path="res://assets/sprites/fight_the_drawer.png" id="1_25qm3"]
 
 [node name="FightTheDrawer" type="Node2D"]
 

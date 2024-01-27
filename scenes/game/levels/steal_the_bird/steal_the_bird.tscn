@@ -1,3 +1,164 @@
-[gd_scene format=3 uid="uid://l4wgcadbfmtv"]
+[gd_scene load_steps=18 format=3 uid="uid://clcakf62kbix0"]
 
-[node name="StealTheBird" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://3y2tpx1de3aj" path="res://assets/GameAssets/BirdBody.png" id="1_6boi8"]
+[ext_resource type="Script" path="res://scenes/game/levels/steal_the_bird/steal_the_bird.gd" id="1_tourf"]
+[ext_resource type="Texture2D" uid="uid://ddox0yiqekj82" path="res://assets/GameAssets/BirdRightWing.png" id="2_3pjux"]
+[ext_resource type="Texture2D" uid="uid://dmcnvhcfm0bd5" path="res://assets/GameAssets/BirdBackground.png" id="2_ce76q"]
+[ext_resource type="Script" path="res://scenes/game/levels/steal_the_bird/Birb.gd" id="3_l83kv"]
+[ext_resource type="Texture2D" uid="uid://evk70ynbpoxw" path="res://assets/GameAssets/BirdLeftWing.png" id="3_lmgnc"]
+[ext_resource type="Texture2D" uid="uid://db0ws8q3vhcpi" path="res://assets/GameAssets/BirdHead.png" id="4_6p46q"]
+[ext_resource type="Texture2D" uid="uid://dcvayle3x1836" path="res://assets/GameAssets/BirdCage.png" id="4_box5g"]
+[ext_resource type="Script" path="res://scenes/game/levels/steal_the_bird/AnimationPlayerBird.gd" id="7_gwc18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54o4m"]
+size = Vector2(20, 1106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj6rq"]
+size = Vector2(20, 1127.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu1ka"]
+size = Vector2(2016, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovu2d"]
+size = Vector2(1973, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1frgj"]
+size = Vector2(211, 300)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajfng"]
+radius = 49.0
+height = 120.0
+
+[sub_resource type="Animation" id="Animation_yv73n"]
+resource_name = "Flap"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Birb/Right Wing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 12, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.03847, -1.32296, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Birb/Right Wing:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 8.2, 12, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20, 160), Vector2(9.99975, -25), Vector2(-10, -135), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/Birb/Left Wing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4, 12, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.680678, 1.30376, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/Birb/Left Wing:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4, 8.2, 12, 14.2, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-50, 45), Vector2(-5.00025, -110), Vector2(165, -330), Vector2(25.0002, -135), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5pxsr"]
+_data = {
+"Flap": SubResource("Animation_yv73n")
+}
+
+[node name="steal_the_bird" type="Node2D"]
+script = ExtResource("1_tourf")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(964, 543)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("2_ce76q")
+
+[node name="ScreenLimit" type="Area2D" parent="."]
+
+[node name="LeftBound" type="CollisionShape2D" parent="ScreenLimit"]
+position = Vector2(0, 543)
+shape = SubResource("RectangleShape2D_54o4m")
+
+[node name="RightBound" type="CollisionShape2D" parent="ScreenLimit"]
+position = Vector2(1929, 538.75)
+shape = SubResource("RectangleShape2D_sj6rq")
+
+[node name="TopBound" type="CollisionShape2D" parent="ScreenLimit"]
+position = Vector2(979, -4)
+shape = SubResource("RectangleShape2D_eu1ka")
+
+[node name="BottomBound" type="CollisionShape2D" parent="ScreenLimit"]
+position = Vector2(971, 1087)
+shape = SubResource("RectangleShape2D_ovu2d")
+
+[node name="Cage2D" type="StaticBody2D" parent="."]
+position = Vector2(969, 865)
+
+[node name="Area2D" type="Area2D" parent="Cage2D"]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cage2D/Area2D"]
+position = Vector2(-3, 4)
+shape = SubResource("RectangleShape2D_1frgj")
+
+[node name="Cage" type="Sprite2D" parent="Cage2D/Area2D/CollisionShape2D"]
+position = Vector2(0.500004, -25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_box5g")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(192, 141)
+input_pickable = true
+script = ExtResource("3_l83kv")
+
+[node name="Birb" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-0.599854, -9.59998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_6boi8")
+
+[node name="Left Wing" type="Sprite2D" parent="CharacterBody2D/Birb"]
+texture = ExtResource("3_lmgnc")
+
+[node name="Birb Head" type="Sprite2D" parent="CharacterBody2D/Birb"]
+texture = ExtResource("4_6p46q")
+
+[node name="Right Wing" type="Sprite2D" parent="CharacterBody2D/Birb"]
+texture = ExtResource("2_3pjux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_ajfng")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_5pxsr")
+}
+script = ExtResource("7_gwc18")
+
+[connection signal="mouse_entered" from="Cage2D" to="CharacterBody2D" method="_on_cage_2d_mouse_entered"]
+[connection signal="body_entered" from="Cage2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="CharacterBody2D" to="CharacterBody2D" method="_on_input_event"]
+[connection signal="mouse_entered" from="CharacterBody2D" to="CharacterBody2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CharacterBody2D" to="CharacterBody2D" method="_on_mouse_exited"]
+[connection signal="animation_finished" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_finished"]
