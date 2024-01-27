@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://do1x2v4i8janh"]
+
+[ext_resource type="Texture2D" uid="uid://c6c2lqoduff26" path="res://assets/sprites/DALL·E 2024-01-26 18.43.01 - A cartoon-style 'Game Over' screen designed for a video game, in a resolution of 1920x1080. The screen prominently displays the words 'Game Over' in l.png" id="1_8ojao"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(959.5, 539.5)
+scale = Vector2(1.07087, 1.05371)
+texture = ExtResource("1_8ojao")

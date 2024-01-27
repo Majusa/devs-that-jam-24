@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://mpjdagiotapr"]
+
+[ext_resource type="Script" path="res://scenes/ui/lives/lives_container.gd" id="1_75r72"]
+
+[node name="LivesContainer" type="HBoxContainer"]
+theme_override_constants/separation = 200
+script = ExtResource("1_75r72")

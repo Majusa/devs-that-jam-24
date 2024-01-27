@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c78ark032pg0r"]
+
+[ext_resource type="Texture2D" uid="uid://m2keymnlbfbh" path="res://assets/sprites/DALL·E 2024-01-26 19.35.20 - An illustration capturing the theme of 'accumulating friendship' in a resolution of 1920x1080 pixels. The image shows a series of cartoon-style charac.png" id="1_dn50t"]
+
+[node name="AccumulateTheFriendship" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.07143, 1.05469)
+texture = ExtResource("1_dn50t")

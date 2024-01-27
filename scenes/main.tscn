@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bolkqmbyfyj4"]
+
+[ext_resource type="PackedScene" uid="uid://swmrbljtbkmk" path="res://scenes/menu/main_menu.tscn" id="1_d7gyp"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_jrlf5"]
+[ext_resource type="PackedScene" uid="uid://c6unydln7j0pe" path="res://global/global.tscn" id="2_evotk"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_jrlf5")
+
+[node name="Global" parent="." instance=ExtResource("2_evotk")]
+
+[node name="MainMenu" parent="." instance=ExtResource("1_d7gyp")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0

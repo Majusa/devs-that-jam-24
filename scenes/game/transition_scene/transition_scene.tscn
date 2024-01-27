@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkuk0ysr6sx58"]
+
+[ext_resource type="Script" path="res://scenes/game/transition_scene/transition_scene.gd" id="1_reuay"]
+[ext_resource type="PackedScene" uid="uid://cofjwa53c7y8b" path="res://scenes/ui/transition_hud.tscn" id="2_ndrwl"]
+[ext_resource type="FontFile" uid="uid://cfgg1b4uccg52" path="res://assets/fonts/gwibble/GWIBBLE_.TTF" id="3_6vmuy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nadf2"]
+font = ExtResource("3_6vmuy")
+font_size = 50
+
+[node name="TransitionScene" type="Node2D"]
+script = ExtResource("1_reuay")
+
+[node name="TransitionHud" parent="." instance=ExtResource("2_ndrwl")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 712.0
+offset_top = 321.0
+offset_right = 1164.0
+offset_bottom = 375.0
+text = "PONTIFICATING....."
+label_settings = SubResource("LabelSettings_nadf2")

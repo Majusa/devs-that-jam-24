@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch0d2dld8alr7"]
+
+[ext_resource type="Texture2D" uid="uid://df25jphhocav3" path="res://assets/sprites/PoetBackground.png" id="1_4jdgj"]
+
+[node name="ThrowThePoet" type="Node2D"]
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+position = Vector2(956, 538)
+scale = Vector2(0.695055, 0.723039)
+texture = ExtResource("1_4jdgj")
