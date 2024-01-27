@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1cy1tra8ro0h"]
+[gd_scene load_steps=11 format=3 uid="uid://bgoo1bxgon8os"]
 
 [ext_resource type="Texture2D" uid="uid://cxjm7ia5g5fvs" path="res://assets/GameAssets/InjuryBackgroundReally.png" id="1_axiib"]
 [ext_resource type="Script" path="res://scenes/game/levels/stroke_the_injury/stroke_the_injury.gd" id="1_v17tm"]
@@ -7,6 +7,33 @@
 [ext_resource type="Texture2D" uid="uid://cqrywkqbtcd0v" path="res://assets/GameAssets/InjuryHead.png" id="5_het3m"]
 [ext_resource type="Texture2D" uid="uid://tgoooo2rh4fs" path="res://assets/GameAssets/InjuryLeftArm.png" id="6_kma4f"]
 [ext_resource type="Texture2D" uid="uid://cdwaw5xg5oi4n" path="res://assets/GameAssets/InjuryRightArm.png" id="7_hxuly"]
+
+[sub_resource type="Animation" id="Animation_bpcaa"]
+resource_name = "Nod"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody/Head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.283787, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-44, 17), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_qi5fn"]
 resource_name = "Shake"
@@ -70,33 +97,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(24, -4), Vector2(-45, 18), Vector2(24, -4), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_bpcaa"]
-resource_name = "Nod"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody/Head:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.283787, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody/Head:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-44, 17), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i1y51"]
