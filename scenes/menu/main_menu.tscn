@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://swmrbljtbkmk"]
+[gd_scene load_steps=14 format=3 uid="uid://swmrbljtbkmk"]
 
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_sk6oh"]
 [ext_resource type="Texture2D" uid="uid://brdvijiwwrcfc" path="res://icon.svg" id="1_staib"]
@@ -8,15 +8,24 @@
 [ext_resource type="Texture2D" uid="uid://cgwcps61nanuf" path="res://assets/sprites/kenney_ui-pack/PNG/red_button01.png" id="6_1ij0y"]
 [ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="7_ds2ch"]
 [ext_resource type="Texture2D" uid="uid://cohp7c1t155ci" path="res://assets/sprites/kenney_ui-pack/PNG/red_button00.png" id="7_wxurv"]
+[ext_resource type="Texture2D" uid="uid://dqvtr7eug3qxn" path="res://assets/GameAssets/BlueButton.png" id="9_7alc7"]
+[ext_resource type="Texture2D" uid="uid://bv5mmka1bm8ky" path="res://assets/GameAssets/RedButton.png" id="10_0oqlb"]
 
 [sub_resource type="Theme" id="Theme_ul13m"]
 default_font = ExtResource("4_2ierc")
 default_font_size = 60
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udl1y"]
+size = Vector2(298, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4x3p"]
+size = Vector2(303.25, 126.125)
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 1.0
+offset_right = 41.0
 offset_bottom = 40.0
 script = ExtResource("1_sk6oh")
 
@@ -33,6 +42,7 @@ offset_bottom = 40.0
 theme = SubResource("Theme_ul13m")
 
 [node name="Play" type="TextureButton" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 780.0
 offset_top = 500.0
@@ -52,6 +62,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Quit" type="TextureButton" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 780.0
 offset_top = 609.0
@@ -91,6 +102,45 @@ text = "Test Random
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Play" type="Area2D" parent="."]
+position = Vector2(835, 603)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play"]
+position = Vector2(103, 24.5)
+shape = SubResource("RectangleShape2D_udl1y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Play"]
+position = Vector2(261, 54)
+scale = Vector2(0.34069, 0.274053)
+texture = ExtResource("9_7alc7")
+
+[node name="Label" type="Label" parent="Play"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "PLAY
+"
+label_settings = ExtResource("7_ds2ch")
+
+[node name="Quit" type="Area2D" parent="."]
+position = Vector2(938, 771)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quit"]
+position = Vector2(-0.249939, 1.37646)
+shape = SubResource("RectangleShape2D_e4x3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Quit"]
+position = Vector2(-171, 188.376)
+scale = Vector2(0.34069, 0.274053)
+texture = ExtResource("10_0oqlb")
+
+[node name="Label" type="Label" parent="Quit"]
+offset_left = -80.2499
+offset_top = -28.6235
+offset_right = 80.7501
+offset_bottom = 28.3765
+text = "QUIT"
+label_settings = ExtResource("7_ds2ch")
 
 [connection signal="pressed" from="Control/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
