@@ -3,6 +3,9 @@ extends RigidBody2D
 @onready var sprite_body = $CollisionPolygon2D/PoetBody
 @onready var sprite_head = $CollisionPolygon2D/PoetBody/PoetHead
 @onready var container = get_parent()
+@onready var picked = $Picked
+@onready var thrown = $Thrown
+@onready var win = $Win
 
 var velocity = Vector2()
 var speed = 0.0
@@ -52,6 +55,7 @@ func _physics_process(delta):
 		print(global_position)
 		apply_impulse(Input.get_last_mouse_velocity()*0.25, last_position)
 		angular_velocity = 10
+		thrown.play()
 
 
 func _on_mouse_entered():
@@ -67,12 +71,14 @@ func _on_mouse_exited():
 func _on_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && is_hover_poet:
 		is_being_picked_up = true
+		picked.play()
 		print("How dare you, I'm hard at work contemplating the wonders of nature!")
 
 
 func _on_collision_area_left_body_entered(body):
 	if !is_being_picked_up:
 		print("By Jove, he's got it!")
+		win.play()
 		#print(Global.win_level_signal.get_connections())
 		Global.win_level_signal.emit()
 

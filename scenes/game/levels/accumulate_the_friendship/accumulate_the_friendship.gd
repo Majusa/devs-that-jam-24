@@ -22,6 +22,10 @@ extends Node2D
 @onready var anim_9 = $StaticBody2D9/AnimationPlayer9
 @onready var anim_10 = $StaticBody2D10/AnimationPlayer10
 
+@onready var picked_up_sound = $PickedUp
+@onready var jailed_sound = $Jailed
+@onready var woo_sound = $Woo
+
 var mouse_hover_jail = false
 
 var can_pick = true
@@ -92,6 +96,7 @@ func _process(delta):
 		if is_1_picked && mouse_hover_jail == false:
 			is_1_picked = false
 			anim_1.play("Walk1")
+			woo_sound.play()
 		elif is_1_picked && mouse_hover_jail == true:
 			is_1_picked = false
 			man1.global_position = man1.global_position
@@ -100,6 +105,7 @@ func _process(delta):
 		if is_2_picked && mouse_hover_jail == false:
 			is_2_picked = false
 			anim_2.play("Walk2")
+			woo_sound.play()
 		elif is_2_picked && mouse_hover_jail == true:
 			is_2_picked = false
 			man2.global_position = man2.global_position
@@ -108,6 +114,7 @@ func _process(delta):
 		if is_3_picked && mouse_hover_jail == false:
 			is_3_picked = false
 			anim_3.play("Walk3")
+			woo_sound.play()
 		elif is_3_picked && mouse_hover_jail == true:
 			is_3_picked = false
 			man3.global_position = man3.global_position
@@ -116,6 +123,7 @@ func _process(delta):
 		if is_4_picked && mouse_hover_jail == false:
 			is_4_picked = false
 			anim_4.play("Walk4")
+			woo_sound.play()
 		elif is_4_picked && mouse_hover_jail == true:
 			is_4_picked = false
 			man4.global_position = man4.global_position
@@ -124,6 +132,7 @@ func _process(delta):
 		if is_5_picked && mouse_hover_jail == false:
 			is_5_picked = false
 			anim_5.play("Walk5")
+			woo_sound.play()
 		elif is_5_picked && mouse_hover_jail == true:
 			is_5_picked = false
 			man5.global_position = man5.global_position
@@ -132,6 +141,7 @@ func _process(delta):
 		if is_6_picked && mouse_hover_jail == false:
 			is_6_picked = false
 			anim_6.play("Walk6")
+			woo_sound.play()
 		elif is_6_picked && mouse_hover_jail == true:
 			is_6_picked = false
 			man6.global_position = man6.global_position
@@ -140,6 +150,7 @@ func _process(delta):
 		if is_7_picked && mouse_hover_jail == false:
 			is_7_picked = false
 			anim_7.play("Walk7")
+			woo_sound.play()
 		elif is_7_picked && mouse_hover_jail == true:
 			is_7_picked = false
 			man7.global_position = man7.global_position
@@ -148,6 +159,7 @@ func _process(delta):
 		if is_8_picked && mouse_hover_jail == false:
 			is_8_picked = false
 			anim_8.play("Walk8")
+			woo_sound.play()
 		elif is_8_picked && mouse_hover_jail == true:
 			is_8_picked = false
 			man8.global_position = man8.global_position
@@ -156,6 +168,7 @@ func _process(delta):
 		if is_9_picked && mouse_hover_jail == false:
 			is_9_picked = false
 			anim_9.play("Walk9")
+			woo_sound.play()
 		elif is_9_picked && mouse_hover_jail == true:
 			is_9_picked = false
 			man9.global_position = man9.global_position
@@ -164,6 +177,7 @@ func _process(delta):
 		if is_10_picked && mouse_hover_jail == false:
 			is_10_picked = false
 			anim_10.play("Walk10")
+			woo_sound.play()
 		elif is_10_picked && mouse_hover_jail == true:
 			is_10_picked = false
 			man10.global_position = man10.global_position
@@ -213,6 +227,7 @@ func _on_static_body_2d_mouse_exited():
 
 func _on_static_body_2d_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_1_hovered:
+		picked_up_sound.play()
 		is_1_picked = true
 		can_pick = false
 
@@ -227,6 +242,7 @@ func _on_static_body_2d_2_mouse_exited():
 
 func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_2_hovered:
+		picked_up_sound.play()
 		is_2_picked = true
 		can_pick = false
 
@@ -241,6 +257,7 @@ func _on_static_body_2d_3_mouse_exited():
 
 func _on_static_body_2d_3_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_3_hovered:
+		picked_up_sound.play()
 		is_3_picked = true
 		can_pick = false
 
@@ -255,6 +272,7 @@ func _on_static_body_2d_4_mouse_exited():
 
 func _on_static_body_2d_4_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_4_hovered:
+		picked_up_sound.play()
 		is_4_picked = true
 		can_pick = false
 
@@ -269,6 +287,7 @@ func _on_static_body_2d_5_mouse_exited():
 
 func _on_static_body_2d_5_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_5_hovered:
+		picked_up_sound.play()
 		is_5_picked = true
 		can_pick = false
 
@@ -283,6 +302,7 @@ func _on_static_body_2d_6_mouse_exited():
 
 func _on_static_body_2d_6_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_6_hovered:
+		picked_up_sound.play()
 		is_6_picked = true
 		can_pick = false
 
@@ -297,6 +317,7 @@ func _on_static_body_2d_7_mouse_exited():
 
 func _on_static_body_2d_7_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_7_hovered:
+		picked_up_sound.play()
 		is_7_picked = true
 		can_pick = false
 
@@ -311,6 +332,7 @@ func _on_static_body_2d_8_mouse_exited():
 
 func _on_static_body_2d_8_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_8_hovered:
+		picked_up_sound.play()
 		is_8_picked = true
 		can_pick = false
 
@@ -325,6 +347,7 @@ func _on_static_body_2d_9_mouse_exited():
 
 func _on_static_body_2d_9_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_9_hovered:
+		picked_up_sound.play()
 		is_9_picked = true
 		can_pick = false
 
@@ -339,6 +362,7 @@ func _on_static_body_2d_10_mouse_exited():
 
 func _on_static_body_2d_10_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pick && is_10_hovered:
+		picked_up_sound.play()
 		is_10_picked = true
 		can_pick = false
 
@@ -392,6 +416,7 @@ func _on_area_2d_mouse_exited():
 	
 func _get_friend():
 	friend_count = friend_count + 1.0
+	jailed_sound.play()
 	if friend_count >= win_number:
 		print("you win!")
 		Global.win_level_signal.emit()

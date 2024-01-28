@@ -10,6 +10,10 @@ var max_stroke_speed = 800;
 var min_stroke_speed = 0;
 @export var victory_time = 3.0
 @onready var anim_player = $Area2D/CollisionPolygon2D/InjuryBody/AnimationPlayer
+@onready var stroke = $Stroke
+@onready var toohard = $TooHard
+var can_play_stroke = true
+var can_play_toohard = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +31,10 @@ func _process(delta):
 		#print("NOT STROKING")
 		is_stroking = false
 		if Input.is_action_pressed("Click") && is_hover_injury:
-
 			_play_shake()
+			if can_play_toohard:
+				can_play_toohard = false
+				toohard.play()
 	elif  Input.get_last_mouse_velocity().length() == min_stroke_speed:
 		#print("STOPPED")
 		is_stroking = false
@@ -39,6 +45,9 @@ func _process(delta):
 		stroke_timer += delta
 		print(stroke_timer)
 		_play_nod()
+		if can_play_stroke:
+			can_play_stroke = false
+			stroke.play()
 	else:
 		stroke_timer = 0
 	if stroke_timer >= victory_time && level_won_check == false:
@@ -77,3 +86,11 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_game_timer_timeout():
 	print("The mummy was not happy with your services...")
 	Global.lose_level_signal.emit()
+
+
+func _on_stroke_finished():
+	can_play_stroke = true
+
+
+func _on_too_hard_finished():
+	can_play_toohard = true

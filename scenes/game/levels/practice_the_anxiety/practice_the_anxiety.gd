@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var anim_player1 = $AnimationPlayer
 @onready var anim_player2 = $AnimationPlayer2
+@onready var knock = $Knock
+@onready var scream  = $Scream
 
 var can_knock = true
 
@@ -29,7 +31,9 @@ func _on_static_body_2d_input_event(viewport, event, shape_idx):
 		can_knock = false
 		print("clicked door")
 		anim_player2.play("DoorKnock")
+		knock.play()
 		anim_player1.play("Scream")
+		scream.play()
 		knock_number = knock_number + 1.0
 		if knock_number >= win_number:
 			print("You win!")
