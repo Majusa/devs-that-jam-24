@@ -28,11 +28,15 @@ signal lose_level_signal;
 	"WinGame" : "res://scenes/game/win_game/win_game.tscn",
 	# Levels innit
 	"TransitionScene" : "res://scenes/game/transition_scene/transition_scene.tscn",
-	#"FightTheDrawer" : "res://scenes/game/levels/fight_the_drawer/fight_the_drawer.tscn",
+	"FightTheDrawer" : "res://scenes/game/levels/fight_the_drawer/fight_the_drawer.tscn",
 	#"AccumulateTheFriendship" : "res://scenes/game/levels/accumulate_the_friendship/accumulate_the_friendship.tscn",
 	"ThrowThePoet" : "res://scenes/game/levels/throw_the_poet/throw_the_poet.tscn",
 	"StealTheBird" : "res://scenes/game/levels/steal_the_bird/steal_the_bird.tscn",
 	"StrokeTheInjury" : "res://scenes/game/levels/stroke_the_injury/stroke_the_injury.tscn",
+	"PracticeTheAnxiety" : "res://scenes/game/levels/practice_the_anxiety/practice_the_anxiety.tscn",
+	"HideTheLady" : "res://scenes/game/levels/hide_the_lady/hide_the_lady.tscn",
+	"RevealTheVillage" : "res://scenes/game/levels/reveal_the_village/reveal_the_village.tscn",
+
 }
 
 @export var LevelArray : Array;
@@ -57,8 +61,11 @@ func set_level_array():
 	"ThrowThePoet",
 	"StealTheBird",
 	"StrokeTheInjury",
-	#"FightTheDrawer",
-	#"AccumulateTheFriendship"
+	"FightTheDrawer",
+	#"AccumulateTheFriendship",
+	"PracticeTheAnxiety",
+	"HideTheLady",
+	"RevealTheVillage"
 	]
 
 func increase_score():
