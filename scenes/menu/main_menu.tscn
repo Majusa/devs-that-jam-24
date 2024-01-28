@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://swmrbljtbkmk"]
 
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_sk6oh"]
-[ext_resource type="Texture2D" uid="uid://brdvijiwwrcfc" path="res://icon.svg" id="1_staib"]
+[ext_resource type="Texture2D" uid="uid://ciebd7ij0g6ea" path="res://assets/GameAssets/HomeScreen.png" id="2_gyw0r"]
 [ext_resource type="Texture2D" uid="uid://bpqowjeyodwes" path="res://assets/sprites/kenney_ui-pack/PNG/green_button00.png" id="3_kcchd"]
 [ext_resource type="FontFile" uid="uid://cfgg1b4uccg52" path="res://assets/fonts/gwibble/GWIBBLE_.TTF" id="4_2ierc"]
 [ext_resource type="Texture2D" uid="uid://x00hsla52hpi" path="res://assets/sprites/kenney_ui-pack/PNG/green_button03.png" id="4_5mhth"]
@@ -9,7 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="7_ds2ch"]
 [ext_resource type="Texture2D" uid="uid://cohp7c1t155ci" path="res://assets/sprites/kenney_ui-pack/PNG/red_button00.png" id="7_wxurv"]
 [ext_resource type="Texture2D" uid="uid://dqvtr7eug3qxn" path="res://assets/GameAssets/BlueButton.png" id="9_7alc7"]
-[ext_resource type="Texture2D" uid="uid://bv5mmka1bm8ky" path="res://assets/GameAssets/RedButton.png" id="10_0oqlb"]
+[ext_resource type="Texture2D" uid="uid://cse4tswdd6b1w" path="res://assets/GameAssets/RedButton.png" id="10_0oqlb"]
 
 [sub_resource type="Theme" id="Theme_ul13m"]
 default_font = ExtResource("4_2ierc")
@@ -31,9 +31,11 @@ script = ExtResource("1_sk6oh")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("1_staib")
+offset_left = -239.0
+offset_top = -791.0
+offset_right = 2661.0
+offset_bottom = 2109.0
+texture = ExtResource("2_gyw0r")
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -110,8 +112,8 @@ position = Vector2(835, 603)
 position = Vector2(103, 24.5)
 shape = SubResource("RectangleShape2D_udl1y")
 
-[node name="Sprite2D" type="Sprite2D" parent="Play"]
-position = Vector2(261, 54)
+[node name="Sprite2D" type="Sprite2D" parent="Play/CollisionShape2D"]
+position = Vector2(158, 29.5)
 scale = Vector2(0.34069, 0.274053)
 texture = ExtResource("9_7alc7")
 
@@ -129,8 +131,8 @@ position = Vector2(938, 771)
 position = Vector2(-0.249939, 1.37646)
 shape = SubResource("RectangleShape2D_e4x3p")
 
-[node name="Sprite2D" type="Sprite2D" parent="Quit"]
-position = Vector2(-171, 188.376)
+[node name="Sprite2D" type="Sprite2D" parent="Quit/CollisionShape2D"]
+position = Vector2(-170.75, 187)
 scale = Vector2(0.34069, 0.274053)
 texture = ExtResource("10_0oqlb")
 
@@ -145,3 +147,5 @@ label_settings = ExtResource("7_ds2ch")
 [connection signal="pressed" from="Control/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Control/TestRandom" to="." method="_on_test_random_pressed"]
+[connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
+[connection signal="input_event" from="Quit" to="." method="_on_quit_input_event"]
