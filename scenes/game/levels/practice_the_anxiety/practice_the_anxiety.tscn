@@ -1,0 +1,205 @@
+[gd_scene load_steps=14 format=3 uid="uid://0mpv2bsunrvq"]
+
+[ext_resource type="Texture2D" uid="uid://2mp2tboh2b5v" path="res://assets/GameAssets/AnxietyBackground.png" id="1_4ibrv"]
+[ext_resource type="Script" path="res://scenes/game/levels/practice_the_anxiety/practice_the_anxiety.gd" id="1_ipear"]
+[ext_resource type="Texture2D" uid="uid://bqje4vqsxvkch" path="res://assets/GameAssets/AnxietyDoor.png" id="2_8okrb"]
+[ext_resource type="Texture2D" uid="uid://dvbsdxbs2ad65" path="res://assets/GameAssets/AnxietyBody.png" id="3_d45u2"]
+[ext_resource type="Texture2D" uid="uid://b3uyi8kokgal3" path="res://assets/GameAssets/AnxietyHead.png" id="4_na5ix"]
+[ext_resource type="Texture2D" uid="uid://d0blrsu811i71" path="res://assets/GameAssets/speechbubble.png" id="4_sjmyi"]
+[ext_resource type="Texture2D" uid="uid://cu6gotqr38j3p" path="res://assets/GameAssets/Exclaim.png" id="5_u3j8e"]
+[ext_resource type="Texture2D" uid="uid://caq3uvyfpcjbs" path="res://assets/GameAssets/AnxietyGrass.png" id="6_ym6kb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5whx"]
+size = Vector2(544.167, 1257.25)
+
+[sub_resource type="Animation" id="Animation_jvnvp"]
+resource_name = "Scream"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 5.6, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.496035, -0.496035, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 5.6, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-131.884, -10.1449), Vector2(-131.884, -10.1449), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Speech:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Speech/!:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4.1, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.526145, -0.14967, -0.509173, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body/Speech/!!:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4.1, 5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.26607, 0.306765, -0.531276, 0.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/Speech/!!!:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4.1, 5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.360155, 0.00770345, 0.360155, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmyue"]
+_data = {
+"Scream": SubResource("Animation_jvnvp")
+}
+
+[sub_resource type="Animation" id="Animation_k3q6j"]
+resource_name = "DoorKnock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/CollisionShape2D/Door:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.135, 1.135), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D/Door:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(679.33, -90.2174), Vector2(685.127, -220.652), Vector2(770.634, -90.2174), Vector2(696.721, -23.5507), Vector2(679.33, -90.2174)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D/CollisionShape2D/Door:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.143621, 0.129402, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_md2a5"]
+_data = {
+"DoorKnock": SubResource("Animation_k3q6j")
+}
+
+[node name="PracticeTheAnxiety" type="Node2D"]
+position = Vector2(954, 535)
+scale = Vector2(0.69, 0.69)
+script = ExtResource("1_ipear")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_4ibrv")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("3_d45u2")
+
+[node name="Speech" type="Sprite2D" parent="Body"]
+visible = false
+position = Vector2(349.275, 40.5797)
+rotation = -0.198414
+scale = Vector2(0.285, 0.285)
+texture = ExtResource("4_sjmyi")
+
+[node name="!" type="Sprite2D" parent="Body/Speech"]
+position = Vector2(-497.459, -183.01)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("5_u3j8e")
+
+[node name="!!" type="Sprite2D" parent="Body/Speech"]
+position = Vector2(-200.339, -112.897)
+texture = ExtResource("5_u3j8e")
+
+[node name="!!!" type="Sprite2D" parent="Body/Speech"]
+position = Vector2(159.507, 58.0051)
+scale = Vector2(0.765, 0.765)
+texture = ExtResource("5_u3j8e")
+
+[node name="Head" type="Sprite2D" parent="Body"]
+position = Vector2(-13.0435, 1.44928)
+rotation = -0.0271862
+texture = ExtResource("4_na5ix")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-679.33, 90.2174)
+shape = SubResource("RectangleShape2D_k5whx")
+
+[node name="Door" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(770.634, -90.2174)
+rotation = -0.0071096
+scale = Vector2(1.135, 1.135)
+texture = ExtResource("2_8okrb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bmyue")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_md2a5")
+}
+
+[node name="Grass" type="Sprite2D" parent="."]
+texture = ExtResource("6_ym6kb")
+
+[connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
