@@ -5,25 +5,31 @@ var is_stroking = false
 var stroke_timer = 0.0
 var is_playing_nod = false
 var is_playing_shake = false
+var level_won_check = false;
+var max_stroke_speed = 800;
+var min_stroke_speed = 0;
 @export var victory_time = 3.0
 @onready var anim_player = $Area2D/CollisionPolygon2D/InjuryBody/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	print("TIME LEFT: ", Global.game_start_timer.time_left)	
 	Global.game_start_timer.start()
+	print("INJURY : Game timer Started")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(Global.game_start_timer.time_left)
-	if Input.get_last_mouse_velocity().length() > 400:
+	#print(Global.game_start_timer.time_left)
+	if Input.get_last_mouse_velocity().length() > max_stroke_speed:
 		#print("NOT STROKING")
 		is_stroking = false
 		if Input.is_action_pressed("Click") && is_hover_injury:
 
 			_play_shake()
-	elif  Input.get_last_mouse_velocity().length() == 0:
+	elif  Input.get_last_mouse_velocity().length() == min_stroke_speed:
 		#print("STOPPED")
 		is_stroking = false
 	else: 
@@ -35,7 +41,8 @@ func _process(delta):
 		_play_nod()
 	else:
 		stroke_timer = 0
-	if stroke_timer >= victory_time:
+	if stroke_timer >= victory_time && level_won_check == false:
+		level_won_check = true;
 		print("you win")
 		#print(Global.win_level_signal.get_connections())
 		Global.win_level_signal.emit()
@@ -68,4 +75,5 @@ func _on_animation_player_animation_finished(anim_name):
 	is_playing_shake = false
 
 func _on_game_timer_timeout():
+	print("The mummy was not happy with your services...")
 	Global.lose_level_signal.emit()

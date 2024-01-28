@@ -11,10 +11,14 @@ var can_click_rope = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	anim_player.speed_scale = 3
-	anim_player2.speed_scale = 3
-	anim_player3.speed_scale = 3
-	anim_player4.speed_scale = 3
+	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	print("TIME LEFT: ", Global.game_start_timer.time_left)	
+	Global.game_start_timer.start()
+	print("VILLAGE : Game timer Started")
+	anim_player.speed_scale = 9
+	anim_player2.speed_scale = 9
+	anim_player3.speed_scale = 9
+	anim_player4.speed_scale = 6
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,3 +57,8 @@ func _on_animation_player_3_animation_finished(anim_name):
 
 func _win():
 	print("You win!")
+	Global.win_level_signal.emit();
+
+func _on_game_timer_timeout():
+	print("Where's the village?")
+	Global.lose_level_signal.emit()

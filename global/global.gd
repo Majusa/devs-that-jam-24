@@ -7,16 +7,20 @@ var total_levels: int;
 var levels_completed : int;
 var high_scores : Array;
 
-var delay_timer : Timer = Timer.new()
-var delay_timer_length : float = 1.0;
-
-var game_start_timer : Timer = Timer.new()
-var game_start_timer_length : float = 10.0;
+var can_transition : bool;
+var game_won : bool;
+var game_lost : bool;
 
 var transition_scene : String = "res://scenes/game/transition_scene/transition_scene.tscn"
 
 signal win_level_signal;
 signal lose_level_signal;
+
+@onready var delay_timer : Timer = Timer.new()
+@onready var delay_timer_length : float = 1.0;
+
+@onready var game_start_timer : Timer = Timer.new()
+@onready var game_start_timer_length : float = 10.0;
 
 @export var difficulty : int;
 @export var lives : int;
@@ -48,24 +52,28 @@ func _ready():
 	lose_level_signal.connect(_on_lose_level_signal_received)
 
 func setup_game():
+	can_transition = true;
+	game_won = false;
 	lives = 4;
 	score = 0;
 	levels_completed = 0;
 	difficulty = 0;
+	add_child(delay_timer)
+	add_child(game_start_timer)
 	set_level_array();
 	set_delay_timer();
 	set_game_timer();
 	
 func set_level_array():
 	LevelArray = [
-	"ThrowThePoet",
-	"StealTheBird",
+	#"ThrowThePoet",
+	#"StealTheBird",
 	"StrokeTheInjury",
-	"FightTheDrawer",
 	#"AccumulateTheFriendship",
 	"PracticeTheAnxiety",
 	"HideTheLady",
-	"RevealTheVillage"
+	"RevealTheVillage",
+	"FightTheDrawer"
 	]
 
 func increase_score():
@@ -73,88 +81,113 @@ func increase_score():
 
 func decrease_life():
 	if lives > 0:
-		print("You lost a life buddy!")
+		print("GLOBAL: Lost a life")
 		lives -= 1;
+		print("GLOBAL: Lives remaining: ", lives)
 	else:
-		game_over()
+		print("GLOBAL: No lives remaining ")
+		game_lost = true;
+		print("GLOBAL: Game_Lost bool is: ", game_lost)		
 
 func increase_levels_completed():
 	levels_completed += 1;
 
-func set_difficulty():
-	match levels_completed:
-		0,1,2,3:
-			difficulty = 0;
-		4,5,6,7:
-			difficulty = 1;
-		8,9,10,11:
-			difficulty = 2;
-
 func set_delay_timer():
 	delay_timer.one_shot = true
-	delay_timer.autostart = true
 	delay_timer.wait_time = delay_timer_length
 	delay_timer.timeout.connect(_on_delay_timer_timeout)
 
 func set_game_timer():
 	game_start_timer.one_shot = true;
-	game_start_timer.autostart = true;
 	game_start_timer.wait_time = game_start_timer_length;
 	#game_start_timer.timeout.connect(_on_game_start_timer_timeout)
 
 func _on_delay_timer_timeout():
-	SceneHandlage.SwitchScene("TransitionScene");
+	print("GLOBAL: Delay timer timed out")
+	increase_levels_completed()
+	print("GLOBAL: Games Played: ", levels_completed)
+	check_levels_left()
+	if game_lost == false:
+		print("GLOBAL: GAME NOT LOST _on_delay_timer: is switching scene")
+		SceneHandlage.SwitchScene("TransitionScene");
+	elif game_won == false:
+		print("GLOBAL: GAME NOT WON _on_delay_timer: is switching scene")
+		SceneHandlage.SwitchScene("TransitionScene");
+	else:	
+		print("GLOBAL: _on_delay_timer: game has been won or lost, no more transitions")
+		pass;
+	
 	
 #func _on_game_start_timer_timeout():
 	## when timer runs out, run lose condition
 	#pass
 
 func _on_win_level_signal_received():
-	print("level won!")
-	set_delay_timer()
+	print("GLOBAL: level won signal received")
 	set_game_timer()
 	win_level();
 	
 	
 func _on_lose_level_signal_received():
-	print("level lost!")
-	set_delay_timer()
+	print("GLOBAL: level lost signal received")
 	set_game_timer()
 	lose_level();
 
 func win_level():
-	print("level won! (win_level)")
+	print("GLOBAL: win_level() triggered")
 	increase_score()
 	# cause a wait timeout
 	check_state()
-	delay_timer.start()
-
-func win_game():
-	print("well done kant")
-	SceneHandlage.SwitchScene("WinGame")
-
+	print("Timer starting....")
+	#delay_timer.start()
 		
 func lose_level():
-	print("level lost")
-	check_state()
+	print("GLOBAL: level_lost() triggered")
 	decrease_life()
 	check_state()
 	#TODO cause a wait timeout
-	delay_timer.start()
+	#delay_timer.start()
 
 func game_over():
+	print("GLOBAL: game_over() triggered")
 	SceneHandlage.SwitchScene("GameOver")
 	#TODO Game over scene should display the score,contain a scene 
 	# change button back to main menu and reset game if clicked
 
+func win_game():
+	print("GLOBAL: Game won, switching scene..")
+	game_won = true;
+	SceneHandlage.SwitchScene("WinGame")
+
 func check_state():
-	if LevelArray.size() == 0:
-		win_game()
-	elif lives == 0:
+	print("GLOBAL: check_state() triggered")
+	print("GLOBAL: Lives as per check state: ", lives)
+	if lives == 0:
+		print("GLOBAL: check_state() setting game_LOST to true and triggering game over")
+		delay_timer.stop()
+		game_lost = true;
+		print("GLOBAL: game_lost state is: ", game_lost)
 		game_over()
-	elif lives > 0 && LevelArray.size() >0:
-		print("Keep on keepin on bud, you got this!")
+	elif Global.LevelArray.size() == 0:
+		print("GLOBAL: check_state() setting game_WON to true and triggering game over")
+		delay_timer.stop()
+		game_won = true;
+		win_game()
+	elif lives > 0 && can_transition == true:
+		delay_timer.start()
+		print("GLOBAL: Keep on keepin on bud, you got this!")
 	else:	
-		print("Wait, how did you get here?! Imposter, get out! Check your checking loop!")
+		print("GLOBAL: Wait, how did you get here?! Imposter, get out! Check your checking loop!")
 		
-		
+
+func check_levels_left():
+	var levels_left = Global.LevelArray.size()
+	print("GLOBAL: Levels Left: ", levels_left)
+#func set_difficulty():
+	#match levels_completed:
+		#0,1,2,3:
+			#difficulty = 0;
+		#4,5,6,7:
+			#difficulty = 1;
+		#8,9,10,11:
+			#difficulty = 2;

@@ -13,7 +13,10 @@ var is_hidden = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	print("TIME LEFT: ", Global.game_start_timer.time_left)
+	Global.game_start_timer.start()
+	print("LADY : Game timer Started")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,8 +27,10 @@ func _process(delta):
 		is_picked_up = false
 		if is_hidden:
 			print("You win!")
+			win()
 
-
+func win():
+	Global.win_level_signal.emit()
 
 func _on_character_body_2d_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && is_hover_lady:
@@ -42,3 +47,7 @@ func _on_area_2d_body_exited(body):
 
 func _on_area_2d_body_entered(body):
 	is_hidden = false
+
+func _on_game_timer_timeout():
+	print("Where's the village?")
+	Global.lose_level_signal.emit()

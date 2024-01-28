@@ -16,7 +16,9 @@ var last_position = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	print("TIME LEFT: ", Global.game_start_timer.time_left)	
 	Global.game_start_timer.start()
+	print("POET : Game timer Started")
 	# Generate random position for spawn
 	randomize()
 	var x_range = Vector2(200, 1800)
@@ -36,6 +38,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	print(Global.game_start_timer.time_left)
+	pass
 
 func _physics_process(delta):
 	mouse_position = get_global_mouse_position()
@@ -75,3 +78,4 @@ func _on_collision_area_left_body_entered(body):
 
 func _on_game_timer_timeout():
 	Global.lose_level_signal.emit()
+	
