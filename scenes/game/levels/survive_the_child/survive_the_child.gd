@@ -6,6 +6,9 @@ extends Node2D
 @onready var HandbagBody = $HandbagBody
 @onready var ShoeBody = $ShoeBody
 @onready var anim_player = $AnimationPlayer
+@onready var crying = $Crying
+@onready var babyhappy = $BabyHappy
+@onready var picked = $Picked
 
 var is_hover_teddy = false
 var is_hover_glasses = false
@@ -34,6 +37,7 @@ func _ready():
 	
 	anim_player.speed_scale = 4
 	anim_player.play("Crying")
+	crying.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,6 +67,7 @@ func _on_static_body_2d_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pickup && is_hover_teddy:
 		teddy_picked = true
 		can_pickup = false
+		picked.play()
 
 func _on_static_body_2d_mouse_entered():
 	is_hover_teddy = true
@@ -76,6 +81,7 @@ func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pickup && is_hover_glasses:
 		glasses_picked = true
 		can_pickup = false
+		picked.play()
 
 func _on_static_body_2d_2_mouse_entered():
 	is_hover_glasses = true
@@ -89,6 +95,7 @@ func _on_static_body_2d_3_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pickup && is_hover_backpack:
 		backpack_picked = true
 		can_pickup = false
+		picked.play()
 
 func _on_static_body_2d_3_mouse_entered():
 	is_hover_backpack = true
@@ -102,6 +109,7 @@ func _on_static_body_2d_4_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pickup && is_hover_handbag:
 		handbag_picked = true
 		can_pickup = false
+		picked.play()
 
 func _on_static_body_2d_4_mouse_entered():
 	is_hover_handbag = true
@@ -115,6 +123,7 @@ func _on_static_body_2d_5_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && can_pickup && is_hover_shoe:
 		shoe_picked = true
 		can_pickup = false
+		picked.play()
 
 func _on_static_body_2d_5_mouse_entered():
 	is_hover_shoe = true
@@ -151,9 +160,15 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _check_score():
 	if current_score >= required_score:
+		crying.stop()
+		babyhappy.play()
 		print("you win!")
 		Global.win_level_signal.emit()
 
 func _on_game_timer_timeout():
 	print("What is this, can you not fight??")
 	Global.lose_level_signal.emit()
+
+
+func _on_crying_finished():
+	crying.play()

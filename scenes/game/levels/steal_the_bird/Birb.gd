@@ -14,6 +14,11 @@ var mouse_position = null
 const ACCELERATION = 50.0
 var last_position = null
 
+@onready var flap = $Flap
+@onready var kazooie = $Kazooie
+@onready var end = $End
+var can_flap = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
@@ -28,12 +33,15 @@ func _ready():
 	var random_y =  randi() % int(y_range[1]-y_range[0]) + 1 + y_range[0]
 	var random_pos = Vector2(random_x, random_y)
 	position = random_pos
+	flap.play()
 	#Randomize movement
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(Global.game_start_timer.time_left)
+	if Input.is_action_just_released("Click") && is_being_picked_up:
+			flap.play()
 	if is_being_picked_up && Input.is_action_pressed("Click"):
 		global_position = lerp (global_position, get_global_mouse_position(), ACCELERATION * delta)
 		## TODO  - speed up flapping
@@ -61,6 +69,8 @@ func _process(delta):
 			random_change = 0
 		
 		position += direction * speed * delta
+		
+	
 
 
 func randomize_speed_and_direction():
@@ -84,14 +94,21 @@ func _on_mouse_exited():
 func _on_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && is_hover_bird:
 		is_being_picked_up = true
+		flap.stop()
+		kazooie.play()
 
 
 func _on_area_2d_body_entered(body):
 	if is_being_picked_up == true:
 		#print("You win!")
 		#print(Global.win_level_signal.get_connections())
+		end.play()
 		Global.win_level_signal.emit()
 
 func _on_game_timer_timeout():
 	print("That's some wily pigeon...")
 	Global.lose_level_signal.emit()
+
+
+func _on_flap_finished():
+	flap.play()

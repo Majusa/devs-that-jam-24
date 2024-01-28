@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://clcakf62kbix0"]
+[gd_scene load_steps=21 format=3 uid="uid://clcakf62kbix0"]
 
 [ext_resource type="Texture2D" uid="uid://3y2tpx1de3aj" path="res://assets/GameAssets/BirdBody.png" id="1_6boi8"]
 [ext_resource type="Script" path="res://scenes/game/levels/steal_the_bird/steal_the_bird.gd" id="1_tourf"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://db0ws8q3vhcpi" path="res://assets/GameAssets/BirdHead.png" id="4_6p46q"]
 [ext_resource type="Texture2D" uid="uid://dcvayle3x1836" path="res://assets/GameAssets/BirdCage.png" id="4_box5g"]
 [ext_resource type="Script" path="res://scenes/game/levels/steal_the_bird/AnimationPlayerBird.gd" id="7_gwc18"]
+[ext_resource type="AudioStream" uid="uid://vs051s0tds5u" path="res://assets/audio/sfx/BRS_Bird_Wing_Flaps_Glvs1_Stdy.wav" id="10_vgbu7"]
+[ext_resource type="AudioStream" uid="uid://cvxmdhcvdol8x" path="res://assets/audio/sfx/Kazooie.wav" id="11_k0y5e"]
+[ext_resource type="AudioStream" uid="uid://dwd0atv8yjc51" path="res://assets/audio/sfx/Sad.wav" id="12_qhhdo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54o4m"]
 size = Vector2(20, 1106)
@@ -156,9 +159,22 @@ libraries = {
 }
 script = ExtResource("7_gwc18")
 
+[node name="Flap" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+position = Vector2(-192, -141)
+stream = ExtResource("10_vgbu7")
+
+[node name="Kazooie" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("11_k0y5e")
+volume_db = 5.971
+
+[node name="End" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("12_qhhdo")
+volume_db = 12.338
+
 [connection signal="mouse_entered" from="Cage2D" to="CharacterBody2D" method="_on_cage_2d_mouse_entered"]
 [connection signal="body_entered" from="Cage2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="input_event" from="CharacterBody2D" to="CharacterBody2D" method="_on_input_event"]
 [connection signal="mouse_entered" from="CharacterBody2D" to="CharacterBody2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CharacterBody2D" to="CharacterBody2D" method="_on_mouse_exited"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_finished"]
+[connection signal="finished" from="CharacterBody2D/Flap" to="CharacterBody2D" method="_on_flap_finished"]

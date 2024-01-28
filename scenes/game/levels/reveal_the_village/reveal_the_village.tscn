@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyul1uc5t02vb"]
+[gd_scene load_steps=22 format=3 uid="uid://dyul1uc5t02vb"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/reveal_the_village/reveal_the_village.gd" id="1_m17bs"]
 [ext_resource type="Texture2D" uid="uid://nyebn65p41r3" path="res://assets/GameAssets/Villiage.png" id="1_v33wu"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cm07xlos764y" path="res://assets/GameAssets/RedCurtainLeft.png" id="7_c2nyq"]
 [ext_resource type="Texture2D" uid="uid://dbnrlknfb03hp" path="res://assets/GameAssets/RedCurtainRight.png" id="8_u72uw"]
 [ext_resource type="Texture2D" uid="uid://cvfn2ydq7e6i3" path="res://assets/GameAssets/RopePull.png" id="9_ukjui"]
+[ext_resource type="AudioStream" uid="uid://dn87gpovxjeok" path="res://assets/audio/sfx/PSE_EFV1_FX_One_Shot_Foley_Curtain_Theatre_Pull_01.wav" id="11_75c7c"]
+[ext_resource type="AudioStream" uid="uid://d046esq4nyt2" path="res://assets/audio/sfx/BOS_BFA_Trumpet_One_Shot_Intro_B.wav" id="12_x6txb"]
 
 [sub_resource type="Animation" id="Animation_hkqvm"]
 resource_name = "RedCurtainPull"
@@ -298,6 +300,12 @@ texture = ExtResource("9_ukjui")
 libraries = {
 "": SubResource("AnimationLibrary_hqim4")
 }
+
+[node name="CurtainSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_75c7c")
+
+[node name="VictorySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_x6txb")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]

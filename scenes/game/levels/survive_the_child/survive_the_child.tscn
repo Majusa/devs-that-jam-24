@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://i15pdv8o7xx2"]
+[gd_scene load_steps=21 format=3 uid="uid://i15pdv8o7xx2"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/survive_the_child/survive_the_child.gd" id="1_03m0w"]
 [ext_resource type="Texture2D" uid="uid://b7lrm5ahgea5o" path="res://assets/GameAssets/BabyBackground.png" id="1_c70jv"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dy4y8kem6n3qw" path="res://assets/GameAssets/backpack.png" id="6_nic0f"]
 [ext_resource type="Texture2D" uid="uid://c7l3be2ganmlh" path="res://assets/GameAssets/handbag.png" id="7_ukc86"]
 [ext_resource type="Texture2D" uid="uid://b8sm50islbpvl" path="res://assets/GameAssets/shoe.png" id="8_mdu25"]
+[ext_resource type="AudioStream" uid="uid://cxiuet2lbfja3" path="res://assets/audio/sfx/CryingBaby.wav" id="10_r0pjp"]
+[ext_resource type="AudioStream" uid="uid://bxym1sn0fvycw" path="res://assets/audio/sfx/Bee.wav" id="11_aie8g"]
+[ext_resource type="AudioStream" uid="uid://bajikg0wbd1aa" path="res://assets/audio/sfx/BabyLaugh_Short.wav" id="11_k56gu"]
 
 [sub_resource type="Animation" id="Animation_2ohgy"]
 resource_name = "Crying"
@@ -170,6 +173,19 @@ rotation = -1.07338
 scale = Vector2(0.465, 0.465)
 texture = ExtResource("8_mdu25")
 
+[node name="Crying" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_r0pjp")
+volume_db = 5.971
+
+[node name="BabyHappy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_k56gu")
+volume_db = -8.146
+
+[node name="Picked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_aie8g")
+volume_db = 10.45
+pitch_scale = 1.17
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="CharacterBody2D" to="." method="_on_character_body_2d_mouse_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
@@ -189,3 +205,4 @@ texture = ExtResource("8_mdu25")
 [connection signal="input_event" from="ShoeBody" to="." method="_on_static_body_2d_5_input_event"]
 [connection signal="mouse_entered" from="ShoeBody" to="." method="_on_static_body_2d_5_mouse_entered"]
 [connection signal="mouse_exited" from="ShoeBody" to="." method="_on_static_body_2d_5_mouse_exited"]
+[connection signal="finished" from="Crying" to="." method="_on_crying_finished"]

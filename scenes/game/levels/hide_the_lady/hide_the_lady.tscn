@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bae66863sb4lr"]
+[gd_scene load_steps=8 format=3 uid="uid://bae66863sb4lr"]
 
 [ext_resource type="Texture2D" uid="uid://ctcrfut463buu" path="res://assets/GameAssets/Park.png" id="1_fqcao"]
 [ext_resource type="Script" path="res://scenes/game/levels/hide_the_lady/hide_the_lady.gd" id="1_nbq0x"]
 [ext_resource type="Texture2D" uid="uid://dxi31v54ddg4w" path="res://assets/GameAssets/TreeForeground.png" id="2_ft2a6"]
 [ext_resource type="Texture2D" uid="uid://ynn3rqlxpa3l" path="res://assets/GameAssets/VictoranLady.png" id="3_jnbtt"]
+[ext_resource type="AudioStream" uid="uid://dlg6ey7hyjhbg" path="res://assets/audio/sfx/Woo.wav" id="5_334bd"]
+[ext_resource type="AudioStream" uid="uid://dx80frunhhwx" path="res://assets/audio/sfx/HumanSigh_S08HU.454.wav" id="5_snbdd"]
+[ext_resource type="AudioStream" uid="uid://cgft63siy6wna" path="res://assets/audio/sfx/Curious.wav" id="7_nkuoy"]
 
 [node name="HideTheLady" type="Node2D"]
 position = Vector2(354, 212)
@@ -37,6 +40,18 @@ polygon = PackedVector2Array(-1384, 389.941, -1361.94, -21.8235, -1367.82, -107.
 [node name="Tree" type="Sprite2D" parent="."]
 position = Vector2(934, 488)
 texture = ExtResource("2_ft2a6")
+
+[node name="Picked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_334bd")
+volume_db = 12.938
+pitch_scale = 1.92
+
+[node name="Hidden" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_snbdd")
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_nkuoy")
+pitch_scale = 2.15
 
 [connection signal="input_event" from="CharacterBody2D" to="." method="_on_character_body_2d_input_event"]
 [connection signal="mouse_entered" from="CharacterBody2D" to="." method="_on_character_body_2d_mouse_entered"]

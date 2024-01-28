@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://0mpv2bsunrvq"]
+[gd_scene load_steps=16 format=3 uid="uid://0mpv2bsunrvq"]
 
 [ext_resource type="Texture2D" uid="uid://2mp2tboh2b5v" path="res://assets/GameAssets/AnxietyBackground.png" id="1_4ibrv"]
 [ext_resource type="Script" path="res://scenes/game/levels/practice_the_anxiety/practice_the_anxiety.gd" id="1_ipear"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d0blrsu811i71" path="res://assets/GameAssets/speechbubble.png" id="4_sjmyi"]
 [ext_resource type="Texture2D" uid="uid://cu6gotqr38j3p" path="res://assets/GameAssets/Exclaim.png" id="5_u3j8e"]
 [ext_resource type="Texture2D" uid="uid://caq3uvyfpcjbs" path="res://assets/GameAssets/AnxietyGrass.png" id="6_ym6kb"]
+[ext_resource type="AudioStream" uid="uid://di7j8llr2eb4j" path="res://assets/audio/sfx/DoorKnockHollow_S011FO.278.wav" id="9_r350d"]
+[ext_resource type="AudioStream" uid="uid://bfnyarbqrn2fg" path="res://assets/audio/sfx/ScreamMale_BW.13249.wav" id="10_i8vrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5whx"]
 size = Vector2(544.167, 1257.25)
@@ -199,6 +201,14 @@ libraries = {
 
 [node name="Grass" type="Sprite2D" parent="."]
 texture = ExtResource("6_ym6kb")
+
+[node name="Knock" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_r350d")
+volume_db = 9.064
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_i8vrk")
+pitch_scale = 1.99
 
 [connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

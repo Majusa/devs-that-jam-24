@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgoo1bxgon8os"]
+[gd_scene load_steps=13 format=3 uid="uid://c1cy1tra8ro0h"]
 
 [ext_resource type="Texture2D" uid="uid://cxjm7ia5g5fvs" path="res://assets/GameAssets/InjuryBackgroundReally.png" id="1_axiib"]
 [ext_resource type="Script" path="res://scenes/game/levels/stroke_the_injury/stroke_the_injury.gd" id="1_v17tm"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cqrywkqbtcd0v" path="res://assets/GameAssets/InjuryHead.png" id="5_het3m"]
 [ext_resource type="Texture2D" uid="uid://tgoooo2rh4fs" path="res://assets/GameAssets/InjuryLeftArm.png" id="6_kma4f"]
 [ext_resource type="Texture2D" uid="uid://cdwaw5xg5oi4n" path="res://assets/GameAssets/InjuryRightArm.png" id="7_hxuly"]
+[ext_resource type="AudioStream" uid="uid://errkiutftbk1" path="res://assets/audio/sfx/mhmm.wav" id="8_bl886"]
+[ext_resource type="AudioStream" uid="uid://xdl84gauvw85" path="res://assets/audio/sfx/MightyBoosh.wav" id="9_5p4tn"]
 
 [sub_resource type="Animation" id="Animation_bpcaa"]
 resource_name = "Nod"
@@ -140,7 +142,17 @@ libraries = {
 "": SubResource("AnimationLibrary_i1y51")
 }
 
+[node name="Stroke" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("8_bl886")
+volume_db = 10.45
+
+[node name="TooHard" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("9_5p4tn")
+volume_db = 6.967
+
 [connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
 [connection signal="mouse_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_mouse_exited"]
 [connection signal="animation_finished" from="CharacterBody2D/Area2D/CollisionPolygon2D/InjuryBody/AnimationPlayer" to="CharacterBody2D" method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="CharacterBody2D/Stroke" to="CharacterBody2D" method="_on_stroke_finished"]
+[connection signal="finished" from="CharacterBody2D/TooHard" to="CharacterBody2D" method="_on_too_hard_finished"]

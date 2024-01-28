@@ -3,6 +3,8 @@ extends Node2D
 @onready var anim_player1 = $AnimationPlayer1 # Left hand
 @onready var anim_player2 = $AnimationPlayer2 # Right hand
 @onready var anim_player3 = $AnimationPlayer3 # Drawer 
+@onready var punch = $Punch
+@onready var drawer = $Drawer
 
 @onready var health = 10
 @onready var drawer_health = 5
@@ -29,12 +31,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("Click") && left_can_attack:
 		left_can_attack = false
 		anim_player1.play("LeftPunch")
+		punch.play()
 		drawer_health = drawer_health - 1
 		if drawer_health <= 0:
 			_win()
 	if Input.is_action_just_pressed("Right Click") && right_can_attack:
 		right_can_attack = false
 		anim_player2.play("RightPunch")
+		punch.play()
 		drawer_health = drawer_health - 1
 		if drawer_health <= 0:
 			_win()
@@ -44,6 +48,7 @@ func _process(delta):
 	if attack_timer >= attack_timing:
 		attack_timer = 0.0
 		anim_player3.play("DrawerAttack")
+		drawer.play()
 		health = health - 1
 		if health == 0:
 			_lose()

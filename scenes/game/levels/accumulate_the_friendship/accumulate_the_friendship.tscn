@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c78ark032pg0r"]
+[gd_scene load_steps=48 format=3 uid="uid://c78ark032pg0r"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/accumulate_the_friendship/accumulate_the_friendship.gd" id="1_0bbu1"]
 [ext_resource type="Texture2D" uid="uid://cg0lgkdasr1ew" path="res://assets/GameAssets/apartmentblock.png" id="1_7j8x7"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://mr6qe6d18rwi" path="res://assets/GameAssets/Man8.png" id="11_1yu0x"]
 [ext_resource type="Texture2D" uid="uid://kaxx3jk5y4ss" path="res://assets/GameAssets/Man9.png" id="12_jt6vw"]
 [ext_resource type="Texture2D" uid="uid://snw252p7ohlo" path="res://assets/GameAssets/Man10.png" id="13_h3uip"]
+[ext_resource type="AudioStream" uid="uid://cgft63siy6wna" path="res://assets/audio/sfx/Curious.wav" id="14_lq12p"]
+[ext_resource type="AudioStream" uid="uid://dwd0atv8yjc51" path="res://assets/audio/sfx/Sad.wav" id="15_3eoup"]
+[ext_resource type="AudioStream" uid="uid://dlg6ey7hyjhbg" path="res://assets/audio/sfx/Woo.wav" id="16_vgftt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brqaa"]
 size = Vector2(396, 259.5)
@@ -579,6 +582,19 @@ texture = ExtResource("13_h3uip")
 libraries = {
 "": SubResource("AnimationLibrary_hsmif")
 }
+
+[node name="PickedUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_lq12p")
+volume_db = 11.079
+
+[node name="Jailed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_3eoup")
+volume_db = 11.56
+
+[node name="Woo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_vgftt")
+volume_db = 11.927
+pitch_scale = 2.2
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

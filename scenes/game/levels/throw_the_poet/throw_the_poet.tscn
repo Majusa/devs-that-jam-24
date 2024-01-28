@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch0d2dld8alr7"]
+[gd_scene load_steps=14 format=3 uid="uid://cs1teiq4s0e1l"]
 
 [ext_resource type="Texture2D" uid="uid://bx0rurtyrpkw1" path="res://assets/GameAssets/PoetBackground.png" id="1_og7v6"]
 [ext_resource type="Script" path="res://scenes/game/levels/throw_the_poet/RigidPoet2D.gd" id="1_p7qtn"]
 [ext_resource type="Texture2D" uid="uid://er6vvoeycbrd" path="res://assets/GameAssets/PoetBody.png" id="2_u8bfi"]
 [ext_resource type="Texture2D" uid="uid://b3yg025kx3r0n" path="res://assets/GameAssets/PoetHead.png" id="3_66v8r"]
 [ext_resource type="Script" path="res://scenes/game/levels/throw_the_poet/AnimationPlayerPoet.gd" id="5_5oa8d"]
+[ext_resource type="AudioStream" uid="uid://b6msot1lpw81b" path="res://assets/audio/sfx/Annoyed.wav" id="6_2esg4"]
+[ext_resource type="AudioStream" uid="uid://bha6ovhgrgyaa" path="res://assets/audio/sfx/PoetFling.wav" id="7_t1tfd"]
+[ext_resource type="AudioStream" uid="uid://dufd6clmw5a0m" path="res://assets/audio/sfx/Panhit.wav" id="8_b3icn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrtn8"]
 size = Vector2(2176, 181)
@@ -107,6 +110,21 @@ libraries = {
 "": SubResource("AnimationLibrary_qqdng")
 }
 script = ExtResource("5_5oa8d")
+
+[node name="Picked" type="AudioStreamPlayer2D" parent="Node2D/RigidPoet2D"]
+position = Vector2(-1682, -735)
+stream = ExtResource("6_2esg4")
+volume_db = 15.426
+
+[node name="Thrown" type="AudioStreamPlayer2D" parent="Node2D/RigidPoet2D"]
+position = Vector2(-1682, -735)
+stream = ExtResource("7_t1tfd")
+volume_db = 23.885
+
+[node name="Win" type="AudioStreamPlayer2D" parent="Node2D/RigidPoet2D"]
+position = Vector2(-1682, -735)
+stream = ExtResource("8_b3icn")
+volume_db = 7.962
 
 [connection signal="area_entered" from="CollisionAreaLeft" to="Node2D/RigidPoet2D" method="_on_collision_area_left_area_entered"]
 [connection signal="body_entered" from="CollisionAreaLeft" to="Node2D/RigidPoet2D" method="_on_collision_area_left_body_entered"]

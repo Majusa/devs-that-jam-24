@@ -4,6 +4,8 @@ extends Node2D
 @onready var anim_player2 = $AnimationPlayer2
 @onready var anim_player3 = $AnimationPlayer3
 @onready var anim_player4 = $AnimationPlayer4
+@onready var curtain_sound = $CurtainSound
+@onready var victory_sound = $VictorySound
 
 var rope_count = 0.0
 var can_click_rope = true
@@ -33,12 +35,15 @@ func _on_rope_pull_input_event(viewport, event, shape_idx):
 		if rope_count == 1.0:
 			anim_player4.play("RopePull")
 			anim_player.play("RedCurtainPull")
+			curtain_sound.play()
 		elif rope_count == 2.0:
 			anim_player4.play("RopePull")
 			anim_player2.play("YellowCurtainPull")
+			curtain_sound.play()
 		elif rope_count == 3.0:
 			anim_player4.play("RopePull")
 			anim_player3.play("BlueCurtainPull")
+			victory_sound.play()
 			_win()
 		else:
 			pass
