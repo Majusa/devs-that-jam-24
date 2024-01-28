@@ -27,20 +27,20 @@ signal lose_level_signal;
 @export var LevelScenes : Dictionary = {
 	# Logic Screens
 	"Main" : "res://scenes/main.tscn",
-	"MainMenu" : "res://scenes/menu/main_menu.tscn",
-	"GameOver" : "res://scenes/game/game_over/game_over.tscn",
-	"WinGame" : "res://scenes/game/win_game/win_game.tscn",
-	"TransitionScene" : "res://scenes/game/transition_scene/transition_scene.tscn",
+	"Main_Menu" : "res://scenes/menu/main_menu.tscn",
+	"Game_Over" : "res://scenes/game/game_over/game_over.tscn",
+	"Win_Game" : "res://scenes/game/win_game/win_game.tscn",
+	"Transition_Scene" : "res://scenes/game/transition_scene/transition_scene.tscn",
 	# Levels innit
-	"FightTheDrawer" : "res://scenes/game/levels/fight_the_drawer/fight_the_drawer.tscn",
-	"AccumulateTheFriendship" : "res://scenes/game/levels/accumulate_the_friendship/accumulate_the_friendship.tscn",
-	"ThrowThePoet" : "res://scenes/game/levels/throw_the_poet/throw_the_poet.tscn",
-	"StealTheBird" : "res://scenes/game/levels/steal_the_bird/steal_the_bird.tscn",
-	"StrokeTheInjury" : "res://scenes/game/levels/stroke_the_injury/stroke_the_injury.tscn",
-	"PracticeTheAnxiety" : "res://scenes/game/levels/practice_the_anxiety/practice_the_anxiety.tscn",
-	"HideTheLady" : "res://scenes/game/levels/hide_the_lady/hide_the_lady.tscn",
-	"RevealTheVillage" : "res://scenes/game/levels/reveal_the_village/reveal_the_village.tscn",
-	"SurviveTheChild" : "res://scenes/game/levels/survive_the_child/survive_the_child.tscn"
+	"Fight_The_Drawer" : "res://scenes/game/levels/fight_the_drawer/fight_the_drawer.tscn",
+	"Accumulate_The_Friendship" : "res://scenes/game/levels/accumulate_the_friendship/accumulate_the_friendship.tscn",
+	"Throw_The_Poet" : "res://scenes/game/levels/throw_the_poet/throw_the_poet.tscn",
+	"Steal_The_Bird" : "res://scenes/game/levels/steal_the_bird/steal_the_bird.tscn",
+	"Stroke_The_Injury" : "res://scenes/game/levels/stroke_the_injury/stroke_the_injury.tscn",
+	"Practice_The_Anxiety" : "res://scenes/game/levels/practice_the_anxiety/practice_the_anxiety.tscn",
+	"Hide_The_Lady" : "res://scenes/game/levels/hide_the_lady/hide_the_lady.tscn",
+	"Reveal_The_Village" : "res://scenes/game/levels/reveal_the_village/reveal_the_village.tscn",
+	"Survive_The_Child" : "res://scenes/game/levels/survive_the_child/survive_the_child.tscn"
 }
 
 @export var LevelArray : Array;
@@ -54,6 +54,7 @@ func _ready():
 func setup_game():
 	can_transition = true;
 	game_won = false;
+	game_lost = false;
 	lives = 4;
 	score = 0;
 	levels_completed = 0;
@@ -66,15 +67,15 @@ func setup_game():
 	
 func set_level_array():
 	LevelArray = [
-	"ThrowThePoet",
-	"StealTheBird",
-	"StrokeTheInjury",
-	"AccumulateTheFriendship",
-	"PracticeTheAnxiety",
-	"HideTheLady",
-	"RevealTheVillage",
-	"FightTheDrawer",
-	"SurviveTheChild"
+	"Throw_The_Poet",
+	"Steal_The_Bird",
+	"Stroke_The_Injury",
+	"Accumulate_The_Friendship",
+	"Practice_The_Anxiety",
+	"Hide_The_Lady",
+	"Reveal_The_Village",
+	"Fight_The_Drawer",
+	"Survive_The_Child"
 	]
 
 func increase_score():
@@ -110,10 +111,10 @@ func _on_delay_timer_timeout():
 	check_levels_left()
 	if game_lost == false:
 		print("GLOBAL: GAME NOT LOST _on_delay_timer: is switching scene")
-		SceneHandlage.SwitchScene("TransitionScene");
+		SceneHandlage.SwitchScene("Transition_Scene");
 	elif game_won == false:
 		print("GLOBAL: GAME NOT WON _on_delay_timer: is switching scene")
-		SceneHandlage.SwitchScene("TransitionScene");
+		SceneHandlage.SwitchScene("Transition_Scene");
 	else:	
 		print("GLOBAL: _on_delay_timer: game has been won or lost, no more transitions")
 		pass;
@@ -151,14 +152,14 @@ func lose_level():
 
 func game_over():
 	print("GLOBAL: game_over() triggered")
-	SceneHandlage.SwitchScene("GameOver")
+	SceneHandlage.SwitchScene("Game_Over")
 	#TODO Game over scene should display the score,contain a scene 
 	# change button back to main menu and reset game if clicked
 
 func win_game():
 	print("GLOBAL: Game won, switching scene..")
 	game_won = true;
-	SceneHandlage.SwitchScene("WinGame")
+	SceneHandlage.SwitchScene("Win_Game")
 
 func check_state():
 	print("GLOBAL: check_state() triggered")

@@ -6,6 +6,7 @@ extends Node
 @onready var MainMenu : Control = $MainMenu
 @onready var TransitionHud : CanvasLayer = $TransitionHud
 
+
 @onready var delay : float;
 
 

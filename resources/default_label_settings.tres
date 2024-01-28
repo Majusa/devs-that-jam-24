@@ -1,7 +1,8 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbphhyq5bdtrt"]
 
-[ext_resource type="FontFile" uid="uid://cfgg1b4uccg52" path="res://assets/fonts/gwibble/GWIBBLE_.TTF" id="1_db0c5"]
+[ext_resource type="FontFile" uid="uid://y3er4m3gtg3k" path="res://assets/fonts/knightswhosayni-font/Knightswhosayni-GvVg.otf" id="1_b15r6"]
 
 [resource]
-font = ExtResource("1_db0c5")
+font = ExtResource("1_b15r6")
 font_size = 50
+font_color = Color(1, 0.960784, 1, 1)

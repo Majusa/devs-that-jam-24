@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://global/global.gd"
 SceneHandlage="*res://global/scene_handler.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+AudioManager="*res://global/audio_manager.tscn"
 
 [display]
 

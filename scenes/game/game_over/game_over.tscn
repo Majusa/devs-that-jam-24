@@ -1,10 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://do1x2v4i8janh"]
+[gd_scene load_steps=6 format=3 uid="uid://do1x2v4i8janh"]
 
 [ext_resource type="Texture2D" uid="uid://bx0ms3l1h2udv" path="res://assets/sprites/game_over.png" id="1_8ojao"]
+[ext_resource type="Script" path="res://scenes/game/game_over/game_over.gd" id="1_hemyd"]
+[ext_resource type="Texture2D" uid="uid://bbu24j3g27xnw" path="res://assets/sprites/kenney_ui-pack/PNG/blue_button00.png" id="2_wv3ic"]
+[ext_resource type="Texture2D" uid="uid://vkbkic8l66ym" path="res://assets/sprites/kenney_ui-pack/PNG/blue_button01.png" id="3_bk10c"]
+[ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="4_xh8s5"]
 
 [node name="GameOver" type="Node2D"]
+script = ExtResource("1_hemyd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(959.5, 539.5)
 scale = Vector2(1.07087, 1.05371)
 texture = ExtResource("1_8ojao")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 787.0
+offset_top = 710.0
+offset_right = 1174.0
+offset_bottom = 798.0
+texture_normal = ExtResource("2_wv3ic")
+texture_pressed = ExtResource("3_bk10c")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Again?"
+label_settings = ExtResource("4_xh8s5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

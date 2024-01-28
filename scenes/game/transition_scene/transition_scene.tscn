@@ -1,22 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkuk0ysr6sx58"]
+[gd_scene load_steps=6 format=3 uid="uid://dkuk0ysr6sx58"]
 
 [ext_resource type="Script" path="res://scenes/game/transition_scene/transition_scene.gd" id="1_reuay"]
 [ext_resource type="PackedScene" uid="uid://cofjwa53c7y8b" path="res://scenes/ui/transition_hud.tscn" id="2_ndrwl"]
-[ext_resource type="FontFile" uid="uid://cfgg1b4uccg52" path="res://assets/fonts/gwibble/GWIBBLE_.TTF" id="3_6vmuy"]
+[ext_resource type="FontFile" uid="uid://y3er4m3gtg3k" path="res://assets/fonts/knightswhosayni-font/Knightswhosayni-GvVg.otf" id="3_i11vk"]
+[ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="4_a0rto"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_nadf2"]
-font = ExtResource("3_6vmuy")
-font_size = 50
+[sub_resource type="LabelSettings" id="LabelSettings_kidqd"]
+font = ExtResource("3_i11vk")
+font_size = 40
 
-[node name="TransitionScene" type="Node2D"]
+[node name="TransitionScene" type="Node"]
 script = ExtResource("1_reuay")
 
 [node name="TransitionHud" parent="." instance=ExtResource("2_ndrwl")]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 712.0
-offset_top = 321.0
-offset_right = 1164.0
-offset_bottom = 375.0
+offset_left = 702.0
+offset_top = 730.0
+offset_right = 1212.0
+offset_bottom = 784.0
 text = "PONTIFICATING....."
-label_settings = SubResource("LabelSettings_nadf2")
+label_settings = SubResource("LabelSettings_kidqd")
+
+[node name="NextGameLabel" type="Label" parent="."]
+offset_left = 658.0
+offset_top = 393.0
+offset_right = 698.0
+offset_bottom = 416.0
+label_settings = ExtResource("4_a0rto")
