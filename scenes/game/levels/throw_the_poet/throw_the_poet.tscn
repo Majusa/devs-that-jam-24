@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch0d2dld8alr7"]
+[gd_scene load_steps=11 format=3 uid="uid://cs1teiq4s0e1l"]
 
 [ext_resource type="Texture2D" uid="uid://bx0rurtyrpkw1" path="res://assets/GameAssets/PoetBackground.png" id="1_og7v6"]
 [ext_resource type="Script" path="res://scenes/game/levels/throw_the_poet/RigidPoet2D.gd" id="1_p7qtn"]

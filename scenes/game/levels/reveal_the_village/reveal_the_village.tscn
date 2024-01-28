@@ -1,0 +1,305 @@
+[gd_scene load_steps=20 format=3 uid="uid://dyul1uc5t02vb"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/reveal_the_village/reveal_the_village.gd" id="1_m17bs"]
+[ext_resource type="Texture2D" uid="uid://nyebn65p41r3" path="res://assets/GameAssets/Villiage.png" id="1_v33wu"]
+[ext_resource type="Texture2D" uid="uid://d4e011fw5ccxt" path="res://assets/GameAssets/BlueCurtainLeft.png" id="2_3712y"]
+[ext_resource type="Texture2D" uid="uid://u8kw2oc2wqhv" path="res://assets/GameAssets/Stage.png" id="2_xy03p"]
+[ext_resource type="Texture2D" uid="uid://cikec1ix6wrtj" path="res://assets/GameAssets/BlueCurtainRight.png" id="3_ko2yw"]
+[ext_resource type="Texture2D" uid="uid://dr1oduojd1f15" path="res://assets/GameAssets/YellowCurtainLeft.png" id="5_bkjap"]
+[ext_resource type="Texture2D" uid="uid://ce124nf2b7mg0" path="res://assets/GameAssets/YellowCurtainRight.png" id="6_25tpp"]
+[ext_resource type="Texture2D" uid="uid://cm07xlos764y" path="res://assets/GameAssets/RedCurtainLeft.png" id="7_c2nyq"]
+[ext_resource type="Texture2D" uid="uid://dbnrlknfb03hp" path="res://assets/GameAssets/RedCurtainRight.png" id="8_u72uw"]
+[ext_resource type="Texture2D" uid="uid://cvfn2ydq7e6i3" path="res://assets/GameAssets/RopePull.png" id="9_ukjui"]
+
+[sub_resource type="Animation" id="Animation_hkqvm"]
+resource_name = "RedCurtainPull"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedCurtain/RedLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.264106]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedCurtain/RedLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1433.33, 318.919), Vector2(908.145, 637.46)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RedCurtain/RedRight:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.392763]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RedCurtain/RedRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-528.829, 317.117), Vector2(6.33483, 736.508)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wudc7"]
+_data = {
+"RedCurtainPull": SubResource("Animation_hkqvm")
+}
+
+[sub_resource type="Animation" id="Animation_ir5r7"]
+resource_name = "YellowCurtainPull"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YellowCurtain/YellowLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.388422]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("YellowCurtain/YellowLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(933, 321), Vector2(129.134, 386.614)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("YellowCurtain/YellowRight:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.286185]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("YellowCurtain/YellowRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1853, 323), Vector2(2558.27, 151.181)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07eke"]
+_data = {
+"YellowCurtainPull": SubResource("Animation_ir5r7")
+}
+
+[sub_resource type="Animation" id="Animation_fcn2t"]
+resource_name = "BlueCurtainPull"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueCurtain/BlueLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.155958]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueCurtain/BlueLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-554.286, 17.1429), Vector2(-1211.11, 7.63893)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlueCurtain/BlueRight:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.230909]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlueCurtain/BlueRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.4, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(308.571, 15.7143), Vector2(594.444, 209.722), Vector2(959.028, 220.139)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Stage:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1039, 528), Vector2(1060, 835)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsdyn"]
+_data = {
+"BlueCurtainPull": SubResource("Animation_fcn2t")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kybjt"]
+radius = 85.0
+height = 220.0
+
+[sub_resource type="Animation" id="Animation_smxbp"]
+resource_name = "RopePull"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RopePull/CollisionShape2D/Rope:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7, -63.0001), Vector2(7, 121), Vector2(7, -63.0001)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqim4"]
+_data = {
+"RopePull": SubResource("Animation_smxbp")
+}
+
+[node name="RevealTheVillage" type="Node2D"]
+script = ExtResource("1_m17bs")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(970, 155)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_v33wu")
+
+[node name="Stage" type="Sprite2D" parent="."]
+position = Vector2(1039, 528)
+texture = ExtResource("2_xy03p")
+
+[node name="BlueCurtain" type="StaticBody2D" parent="."]
+position = Vector2(393, -15)
+scale = Vector2(1.44, 1.44)
+
+[node name="BlueLeft" type="Sprite2D" parent="BlueCurtain"]
+position = Vector2(-554.286, 17.1429)
+texture = ExtResource("2_3712y")
+
+[node name="BlueRight" type="Sprite2D" parent="BlueCurtain"]
+position = Vector2(308.571, 15.7143)
+texture = ExtResource("3_ko2yw")
+
+[node name="YellowCurtain" type="StaticBody2D" parent="."]
+position = Vector2(-244, -325)
+scale = Vector2(1.27, 1.27)
+
+[node name="YellowLeft" type="Sprite2D" parent="YellowCurtain"]
+position = Vector2(933, 321)
+texture = ExtResource("5_bkjap")
+
+[node name="YellowRight" type="Sprite2D" parent="YellowCurtain"]
+position = Vector2(1853, 323)
+texture = ExtResource("6_25tpp")
+
+[node name="RedCurtain" type="StaticBody2D" parent="."]
+position = Vector2(-29, -581)
+scale = Vector2(2.21, 1.575)
+
+[node name="RedLeft" type="Sprite2D" parent="RedCurtain"]
+position = Vector2(1433.33, 318.919)
+texture = ExtResource("7_c2nyq")
+
+[node name="RedRight" type="Sprite2D" parent="RedCurtain"]
+position = Vector2(-528.829, 317.117)
+texture = ExtResource("8_u72uw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wudc7")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_07eke")
+}
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bsdyn")
+}
+
+[node name="RopePull" type="StaticBody2D" parent="."]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopePull"]
+position = Vector2(1768, 270)
+shape = SubResource("CapsuleShape2D_kybjt")
+
+[node name="Rope" type="Sprite2D" parent="RopePull/CollisionShape2D"]
+position = Vector2(7, -63.0001)
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("9_ukjui")
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hqim4")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer3" to="." method="_on_animation_player_3_animation_finished"]
+[connection signal="input_event" from="RopePull" to="." method="_on_rope_pull_input_event"]
