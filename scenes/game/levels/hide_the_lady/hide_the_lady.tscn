@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bae66863sb4lr"]
+
+[ext_resource type="Texture2D" uid="uid://ctcrfut463buu" path="res://assets/GameAssets/Park.png" id="1_fqcao"]
+[ext_resource type="Script" path="res://scenes/game/levels/hide_the_lady/hide_the_lady.gd" id="1_nbq0x"]
+[ext_resource type="Texture2D" uid="uid://dxi31v54ddg4w" path="res://assets/GameAssets/TreeForeground.png" id="2_ft2a6"]
+[ext_resource type="Texture2D" uid="uid://ynn3rqlxpa3l" path="res://assets/GameAssets/VictoranLady.png" id="3_jnbtt"]
+
+[node name="HideTheLady" type="Node2D"]
+position = Vector2(354, 212)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("1_nbq0x")
+
+[node name="Park" type="Sprite2D" parent="."]
+position = Vector2(924, 604)
+scale = Vector2(1, 1)
+texture = ExtResource("1_fqcao")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(1364.71, 991.176)
+scale = Vector2(1, 1)
+input_pickable = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+position = Vector2(-426.471, -488.235)
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(380.706, 601.706, 380.706, 544.353, 385.118, 475.235, 392.47, 439.941, 399.823, 426.706, 404.235, 422.294, 404.235, 412, 370.412, 416.412, 364.529, 413.471, 363.059, 407.588, 367.47, 394.353, 376.294, 381.118, 380.706, 367.882, 377.765, 360.529, 393.941, 345.824, 405.706, 342.882, 416, 334.059, 411.588, 326.706, 410.118, 320.824, 402.765, 314.941, 404.235, 300.235, 408.647, 297.294, 408.647, 306.118, 411.588, 298.765, 416, 288.471, 429.235, 285.529, 445.412, 288.471, 452.765, 297.294, 458.647, 306.118, 464.529, 307.588, 466, 319.353, 467.47, 332.588, 467.47, 342.882, 457.176, 360.529, 457.176, 379.647, 460.118, 392.882, 448.353, 413.471, 451.294, 423.765, 468.941, 439.941, 477.765, 444.353, 479.235, 453.176, 477.765, 462, 470.412, 467.882, 483.647, 510.529, 510.118, 588.471, 511.588, 594.353, 496.882, 598.765, 452.765, 604.647, 429.235, 607.588, 429.235, 617.882, 439.529, 626.706, 446.882, 631.118, 452.765, 634.059, 451.294, 638.471, 430.706, 637, 417.47, 635.529, 407.176, 635.529, 405.706, 631.118, 408.647, 616.412, 408.647, 607.588, 385.118, 606.118)
+
+[node name="Lady" type="Sprite2D" parent="CharacterBody2D/CollisionPolygon2D"]
+scale = Vector2(1, 1)
+texture = ExtResource("3_jnbtt")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(934, 488)
+scale = Vector2(1, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-1228.12, 479.647, -956.059, 651.706, -867.823, 785.529, -873.706, 885.529, 1485.12, 867.882, 1446.88, -740.941, 1367.47, -867.412, -716.353, -870.353, -1001.65, -840.941, -1103.12, -540.941, -1220.76, -295.353, -1239.88, 154.647, -1242.82, 447.294)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-1384, 389.941, -1361.94, -21.8235, -1367.82, -107.118, -1354.59, -167.412, -1342.82, -354.176, -1341.35, -513, -1388.41, -776.235, -1416.35, -846.824, -1595.76, -815.941, -1613.41, 14.9412, -1586.94, 337)
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(934, 488)
+scale = Vector2(1, 1)
+texture = ExtResource("2_ft2a6")
+
+[connection signal="input_event" from="CharacterBody2D" to="." method="_on_character_body_2d_input_event"]
+[connection signal="mouse_entered" from="CharacterBody2D" to="." method="_on_character_body_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CharacterBody2D" to="." method="_on_character_body_2d_mouse_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
