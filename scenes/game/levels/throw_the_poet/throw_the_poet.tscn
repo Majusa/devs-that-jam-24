@@ -114,17 +114,17 @@ script = ExtResource("5_5oa8d")
 [node name="Picked" type="AudioStreamPlayer2D" parent="Node2D/RigidPoet2D"]
 position = Vector2(-1682, -735)
 stream = ExtResource("6_2esg4")
-volume_db = 15.426
+volume_db = 17.416
 
 [node name="Thrown" type="AudioStreamPlayer2D" parent="Node2D/RigidPoet2D"]
 position = Vector2(-1682, -735)
 stream = ExtResource("7_t1tfd")
-volume_db = 23.885
+volume_db = 23.945
 
 [node name="Win" type="AudioStreamPlayer2D" parent="Node2D/RigidPoet2D"]
 position = Vector2(-1682, -735)
 stream = ExtResource("8_b3icn")
-volume_db = 7.962
+volume_db = 17.914
 
 [connection signal="area_entered" from="CollisionAreaLeft" to="Node2D/RigidPoet2D" method="_on_collision_area_left_area_entered"]
 [connection signal="body_entered" from="CollisionAreaLeft" to="Node2D/RigidPoet2D" method="_on_collision_area_left_body_entered"]

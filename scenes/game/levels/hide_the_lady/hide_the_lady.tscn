@@ -51,6 +51,7 @@ stream = ExtResource("5_snbdd")
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_nkuoy")
+volume_db = 14.431
 pitch_scale = 2.15
 
 [connection signal="input_event" from="CharacterBody2D" to="." method="_on_character_body_2d_input_event"]
