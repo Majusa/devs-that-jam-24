@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgoo1bxgon8os"]
+[gd_scene load_steps=11 format=3 uid="uid://c1cy1tra8ro0h"]
 
 [ext_resource type="Texture2D" uid="uid://cxjm7ia5g5fvs" path="res://assets/GameAssets/InjuryBackgroundReally.png" id="1_axiib"]
 [ext_resource type="Script" path="res://scenes/game/levels/stroke_the_injury/stroke_the_injury.gd" id="1_v17tm"]
