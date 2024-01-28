@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://l4wgcadbfmtv"]
+[gd_scene load_steps=18 format=3 uid="uid://clcakf62kbix0"]
 
 [ext_resource type="Texture2D" uid="uid://3y2tpx1de3aj" path="res://assets/GameAssets/BirdBody.png" id="1_6boi8"]
 [ext_resource type="Script" path="res://scenes/game/levels/steal_the_bird/steal_the_bird.gd" id="1_tourf"]
