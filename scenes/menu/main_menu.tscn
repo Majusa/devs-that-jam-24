@@ -75,6 +75,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TestRandom" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 790.0
 offset_top = 299.0
 offset_right = 1170.0

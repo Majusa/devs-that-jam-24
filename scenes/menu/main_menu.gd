@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	$AudioStreamPlayer
 	pass
 
 func _on_play_pressed():

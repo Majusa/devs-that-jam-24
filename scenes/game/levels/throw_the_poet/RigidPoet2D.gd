@@ -15,6 +15,8 @@ var last_position = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	Global.game_start_timer.start()
 	# Generate random position for spawn
 	randomize()
 	var x_range = Vector2(200, 1800)
@@ -30,14 +32,10 @@ func _ready():
 		sprite_body.flip_h = true
 		sprite_head.flip_h = true
 		
-	
-		
-		
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	print(Global.game_start_timer.time_left)
 
 func _physics_process(delta):
 	mouse_position = get_global_mouse_position()
@@ -71,4 +69,9 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_collision_area_left_body_entered(body):
 	if !is_being_picked_up:
-		print("Fakka uuuuuu!") # Replace with function body.
+		print("By Jove, he's got it!")
+		#print(Global.win_level_signal.get_connections())
+		Global.win_level_signal.emit()
+
+func _on_game_timer_timeout():
+	Global.lose_level_signal.emit()

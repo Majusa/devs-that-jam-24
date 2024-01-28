@@ -16,6 +16,8 @@ var last_position = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	Global.game_start_timer.start()
 	# Randomize start position
 	randomize()
 	var x_range = Vector2(200, screen_bound_x - 200)
@@ -29,6 +31,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(Global.game_start_timer.time_left)
 	if is_being_picked_up && Input.is_action_pressed("Click"):
 		global_position = lerp (global_position, get_global_mouse_position(), ACCELERATION * delta)
 		## TODO  - speed up flapping
@@ -83,4 +86,9 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_area_2d_body_entered(body):
 	if is_being_picked_up == true:
-		print("You win!")
+		#print("You win!")
+		#print(Global.win_level_signal.get_connections())
+		Global.win_level_signal.emit()
+
+func _on_game_timer_timeout():
+	Global.lose_level_signal.emit()

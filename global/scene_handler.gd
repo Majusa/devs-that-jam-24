@@ -15,15 +15,22 @@ func _ready() -> void:
 	m_CurrentSceneAlias = Global.LevelScenes.find_key(mainScene)
 
 func PickScene(LevelArray : Array):
-	randomize()
-	var random_index = randi_range(0,LevelArray.size()-1)
-	var next_scene = LevelArray[random_index]
-	LevelArray.remove_at(random_index)
-	return next_scene
+	if Global.LevelArray.size() == 0:
+		Global.win_game()
+	else:
+		print("Array Size: ", LevelArray.size())
+		randomize()
+		var random_index = randi_range(0,LevelArray.size()-1)
+		print("random index is: ", random_index)
+		var next_scene = LevelArray[random_index]
+		print("next scene is: ", next_scene)
+		LevelArray.remove_at(random_index)
+		return next_scene
 	
 # Description: Switch to the requested scene based on its alias
 # Parameter sceneAlias: The scene alias of the scene to switch to
 func SwitchScene(sceneAlias : String) -> void:
+	
 	SceneManager.change_scene(Global.LevelScenes[sceneAlias])
 
 # Description: Restart the current scene

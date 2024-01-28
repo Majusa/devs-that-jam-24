@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bemotd4ddk46c"]
+
+[ext_resource type="Texture2D" uid="uid://t7gu87ewmscp" path="res://assets/sprites/big_thumb.jpg" id="1_ela5l"]
+
+[node name="WinGame" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(958, 535)
+scale = Vector2(1.2279, 1.34833)
+texture = ExtResource("1_ela5l")

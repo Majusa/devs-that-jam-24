@@ -8,14 +8,15 @@ var is_playing_shake = false
 @export var victory_time = 3.0
 @onready var anim_player = $Area2D/CollisionPolygon2D/InjuryBody/AnimationPlayer
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	Global.game_start_timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(Global.game_start_timer.time_left)
 	if Input.get_last_mouse_velocity().length() > 400:
 		#print("NOT STROKING")
 		is_stroking = false
@@ -36,6 +37,8 @@ func _process(delta):
 		stroke_timer = 0
 	if stroke_timer >= victory_time:
 		print("you win")
+		#print(Global.win_level_signal.get_connections())
+		Global.win_level_signal.emit()
 
 
 func _on_area_2d_mouse_entered():
@@ -64,3 +67,5 @@ func _on_animation_player_animation_finished(anim_name):
 	is_playing_nod = false
 	is_playing_shake = false
 
+func _on_game_timer_timeout():
+	Global.lose_level_signal.emit()
