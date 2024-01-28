@@ -51,13 +51,17 @@ var is_10_hovered = false
 var mouse_position = null
 var speed_anim = 2.8
 
-var win_number = 5.0
+var win_number = 4.0
 var friend_count = 0.0
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	print("TIME LEFT: ", Global.game_start_timer.time_left)	
+	Global.game_start_timer.start()
+	
 	anim_1.speed_scale =  speed_anim
 	anim_2.speed_scale =  speed_anim
 	anim_3.speed_scale =  speed_anim
@@ -390,3 +394,8 @@ func _get_friend():
 	friend_count = friend_count + 1.0
 	if friend_count >= win_number:
 		print("you win!")
+		Global.win_level_signal.emit()
+
+func _on_game_timer_timeout():
+	print("What is this, can you not fight??")
+	Global.lose_level_signal.emit()

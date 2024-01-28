@@ -28,6 +28,10 @@ var current_score = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.game_start_timer.timeout.connect(_on_game_timer_timeout)
+	print("TIME LEFT: ", Global.game_start_timer.time_left)	
+	Global.game_start_timer.start()
+	
 	anim_player.speed_scale = 4
 	anim_player.play("Crying")
 
@@ -148,4 +152,8 @@ func _on_animation_player_animation_finished(anim_name):
 func _check_score():
 	if current_score >= required_score:
 		print("you win!")
+		Global.win_level_signal.emit()
 
+func _on_game_timer_timeout():
+	print("What is this, can you not fight??")
+	Global.lose_level_signal.emit()
