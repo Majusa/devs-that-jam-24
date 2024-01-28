@@ -1,5 +1,6 @@
 extends Node
 
+@onready var anim_player = $Background/AnimationPlayer
 @onready var timer : Timer = Timer.new()
 @onready var label : Label = $Label
 @onready var next_game_label : Label = $NextGameLabel
@@ -26,6 +27,8 @@ func _ready():
 	timer.wait_time = 3.0
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
+	anim_player.speed_scale = 12
+	anim_player.play("Running")
 
 func _on_timer_timeout():
 	SceneHandlage.SwitchScene(next_scene)
@@ -48,3 +51,7 @@ func set_next_game_label_text(input_scene : String):
 	var label_text = " ".join(verb_the_noun)
 	next_game_label.text = label_text
 	
+
+
+func _on_animation_player_animation_finished(anim_name):
+	anim_player.play("Running")

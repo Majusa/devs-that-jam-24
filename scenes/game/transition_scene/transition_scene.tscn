@@ -1,9 +1,120 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkuk0ysr6sx58"]
+[gd_scene load_steps=14 format=3 uid="uid://dkuk0ysr6sx58"]
 
 [ext_resource type="Script" path="res://scenes/game/transition_scene/transition_scene.gd" id="1_reuay"]
+[ext_resource type="Texture2D" uid="uid://ctriouq01xo3k" path="res://assets/GameAssets/TransitionBackground.png" id="2_2mc7t"]
 [ext_resource type="PackedScene" uid="uid://cofjwa53c7y8b" path="res://scenes/ui/transition_hud.tscn" id="2_ndrwl"]
+[ext_resource type="Texture2D" uid="uid://cu8223lburt5p" path="res://assets/GameAssets/TransitionLeftLeg.png.png" id="3_e3haf"]
 [ext_resource type="FontFile" uid="uid://y3er4m3gtg3k" path="res://assets/fonts/knightswhosayni-font/Knightswhosayni-GvVg.otf" id="3_i11vk"]
 [ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="4_a0rto"]
+[ext_resource type="Texture2D" uid="uid://birey2ah60swc" path="res://assets/GameAssets/TransitionRightLeg.png.png" id="4_t8ak0"]
+[ext_resource type="Texture2D" uid="uid://cdgl7jk62om6r" path="res://assets/GameAssets/TransitionLeftArm.png" id="5_p4alh"]
+[ext_resource type="Texture2D" uid="uid://drwqouk7rmfej" path="res://assets/GameAssets/TransitionBody.png.png" id="6_x1g6a"]
+[ext_resource type="Texture2D" uid="uid://0tsuo0mxb36w" path="res://assets/GameAssets/TransitionRightArm.png.png" id="7_2ds7o"]
+
+[sub_resource type="Animation" id="Animation_ku4jn"]
+resource_name = "Running"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -2.10264, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1, 1.5, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(152, 226), Vector2(495, 378), Vector2(846, 338), Vector2(1047, 169), Vector2(491, 382), Vector2(264, 300), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 2.43496, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6, 0.8, 1, 1.2, 1.5, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(121, -631), Vector2(418, -869), Vector2(527, -912), Vector2(938, -864), Vector2(1273, -653), Vector2(932, -858), Vector2(430, -841), Vector2(259, -712), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightLeg:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 2.27685, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RightLeg:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(706, -457), Vector2(1171, -44), Vector2(410, -402), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LeftLeg:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -2.10002, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LeftLeg:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(97, 579), Vector2(669, 893), Vector2(13, 443), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qiasd"]
+_data = {
+"Running": SubResource("Animation_ku4jn")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_kidqd"]
 font = ExtResource("3_i11vk")
@@ -11,6 +122,31 @@ font_size = 40
 
 [node name="TransitionScene" type="Node"]
 script = ExtResource("1_reuay")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(981, 566)
+scale = Vector2(0.695, 0.695)
+texture = ExtResource("2_2mc7t")
+
+[node name="LeftLeg" type="Sprite2D" parent="Background"]
+texture = ExtResource("3_e3haf")
+
+[node name="RightLeg" type="Sprite2D" parent="Background"]
+texture = ExtResource("4_t8ak0")
+
+[node name="LeftArm" type="Sprite2D" parent="Background"]
+texture = ExtResource("5_p4alh")
+
+[node name="Body" type="Sprite2D" parent="Background"]
+texture = ExtResource("6_x1g6a")
+
+[node name="RightArm" type="Sprite2D" parent="Background"]
+texture = ExtResource("7_2ds7o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+libraries = {
+"": SubResource("AnimationLibrary_qiasd")
+}
 
 [node name="TransitionHud" parent="." instance=ExtResource("2_ndrwl")]
 
@@ -28,3 +164,5 @@ offset_top = 393.0
 offset_right = 698.0
 offset_bottom = 416.0
 label_settings = ExtResource("4_a0rto")
+
+[connection signal="animation_finished" from="Background/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
