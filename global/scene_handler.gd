@@ -21,7 +21,6 @@ func PickScene(LevelArray : Array):
 	LevelArray.remove_at(random_index)
 	return next_scene
 	
-	
 # Description: Switch to the requested scene based on its alias
 # Parameter sceneAlias: The scene alias of the scene to switch to
 func SwitchScene(sceneAlias : String) -> void:

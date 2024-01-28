@@ -16,3 +16,5 @@ script = ExtResource("1_jrlf5")
 wait_time = 3.0
 
 [node name="TransitionHud" parent="." instance=ExtResource("4_m73ac")]
+
+[node name="DelayTimer" type="Timer" parent="."]

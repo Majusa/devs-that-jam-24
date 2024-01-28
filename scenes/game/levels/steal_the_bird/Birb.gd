@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @onready var screen_bound_x = DisplayServer.window_get_size().x
 @onready var screen_bound_y = DisplayServer.window_get_size().y
 var speed = randf_range(1500, 2500)
@@ -12,9 +13,6 @@ var is_being_picked_up = false
 var mouse_position = null
 const ACCELERATION = 50.0
 var last_position = null
-
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -81,8 +79,6 @@ func _on_mouse_exited():
 func _on_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("Click") && is_hover_bird:
 		is_being_picked_up = true
-
-
 
 
 func _on_area_2d_body_entered(body):
