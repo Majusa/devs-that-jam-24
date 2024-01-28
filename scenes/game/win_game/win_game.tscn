@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bemotd4ddk46c"]
 
-[ext_resource type="Texture2D" uid="uid://t7gu87ewmscp" path="res://assets/sprites/big_thumb.jpg" id="1_ela5l"]
 [ext_resource type="Script" path="res://scenes/game/win_game/win_game.gd" id="1_le0u7"]
+[ext_resource type="Texture2D" uid="uid://ctnrp5gdllpsr" path="res://assets/GameAssets/youwin.png" id="2_hvkv5"]
 [ext_resource type="Texture2D" uid="uid://bbu24j3g27xnw" path="res://assets/sprites/kenney_ui-pack/PNG/blue_button00.png" id="3_x1guw"]
 [ext_resource type="Texture2D" uid="uid://vkbkic8l66ym" path="res://assets/sprites/kenney_ui-pack/PNG/blue_button01.png" id="4_s4v5p"]
 [ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="5_abfsx"]
@@ -11,8 +11,8 @@ script = ExtResource("1_le0u7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(958, 535)
-scale = Vector2(1.2279, 1.34833)
-texture = ExtResource("1_ela5l")
+scale = Vector2(0.733, 0.805)
+texture = ExtResource("2_hvkv5")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 anchors_preset = 8

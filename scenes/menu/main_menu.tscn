@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://swmrbljtbkmk"]
+[gd_scene load_steps=15 format=3 uid="uid://swmrbljtbkmk"]
 
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_sk6oh"]
 [ext_resource type="Texture2D" uid="uid://ciebd7ij0g6ea" path="res://assets/GameAssets/HomeScreen.png" id="2_gyw0r"]
+[ext_resource type="Texture2D" uid="uid://choshcpmnmu2t" path="res://assets/GameAssets/VerbTheNounTitle.png" id="3_jvlyq"]
 [ext_resource type="Texture2D" uid="uid://bpqowjeyodwes" path="res://assets/sprites/kenney_ui-pack/PNG/green_button00.png" id="3_kcchd"]
 [ext_resource type="FontFile" uid="uid://cfgg1b4uccg52" path="res://assets/fonts/gwibble/GWIBBLE_.TTF" id="4_2ierc"]
 [ext_resource type="Texture2D" uid="uid://x00hsla52hpi" path="res://assets/sprites/kenney_ui-pack/PNG/green_button03.png" id="4_5mhth"]
 [ext_resource type="Texture2D" uid="uid://cgwcps61nanuf" path="res://assets/sprites/kenney_ui-pack/PNG/red_button01.png" id="6_1ij0y"]
 [ext_resource type="LabelSettings" uid="uid://dbphhyq5bdtrt" path="res://resources/default_label_settings.tres" id="7_ds2ch"]
 [ext_resource type="Texture2D" uid="uid://cohp7c1t155ci" path="res://assets/sprites/kenney_ui-pack/PNG/red_button00.png" id="7_wxurv"]
-[ext_resource type="Texture2D" uid="uid://dqvtr7eug3qxn" path="res://assets/GameAssets/BlueButton.png" id="9_7alc7"]
-[ext_resource type="Texture2D" uid="uid://cse4tswdd6b1w" path="res://assets/GameAssets/RedButton.png" id="10_0oqlb"]
+[ext_resource type="Texture2D" uid="uid://b3popgrkovfdx" path="res://assets/GameAssets/BlueButton.png" id="9_7alc7"]
+[ext_resource type="Texture2D" uid="uid://cr0isxmieprvb" path="res://assets/GameAssets/RedButton.png" id="10_0oqlb"]
 
 [sub_resource type="Theme" id="Theme_ul13m"]
 default_font = ExtResource("4_2ierc")
@@ -37,14 +38,19 @@ offset_right = 2661.0
 offset_bottom = 2109.0
 texture = ExtResource("2_gyw0r")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(953, 336)
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("3_jvlyq")
+
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
+offset_top = 231.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 271.0
 theme = SubResource("Theme_ul13m")
 
 [node name="Play" type="TextureButton" parent="Control"]
-visible = false
 layout_mode = 0
 offset_left = 780.0
 offset_top = 500.0
@@ -64,7 +70,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Quit" type="TextureButton" parent="Control"]
-visible = false
 layout_mode = 0
 offset_left = 780.0
 offset_top = 609.0
@@ -106,6 +111,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Play" type="Area2D" parent="."]
+visible = false
 position = Vector2(835, 603)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Play"]
@@ -125,6 +131,7 @@ text = "PLAY
 label_settings = ExtResource("7_ds2ch")
 
 [node name="Quit" type="Area2D" parent="."]
+visible = false
 position = Vector2(938, 771)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quit"]
